@@ -1,46 +1,42 @@
-site_name: pynapple
+site_name: nwbmatic
 nav:  
   - Overview: index.md
-  - Usage:
-    - Tutorials:
-      - Quick start: notebooks/pynapple-quick-start.ipynb
-      - Core: notebooks/pynapple-core-notebook.ipynb
-      - IO: notebooks/pynapple-io-notebook.ipynb
-      - Process: notebooks/pynapple-process-notebook.ipynb
-    - pynacollada: pynacollada.md
+  - Tutorials: 
+    - Loading neurosuite-optitrack: nwbmatic-neurosuite-optitrack.md
+    - Custom IO: nwbmatic-custom-io.md
+    # - Gallery: generated/gallery
   - Modules:
-    - Core:
-      - Time Series: core.time_series.md
-      - Interval Sets: core.interval_set.md
-      - Time Series Group: core.ts_group.md
-    - IO:
-      - Miscellaneous: io.md
-      - Basic IO: io.loader.md
-      - Neurosuite: io.neurosuite.md
-      - Phy: io.phy.md
-      - CNMF-E: io.cnmfe.md
-      - Suite2p: io.suite2p.md
-    - Process: 
-      - Correlograms: process.correlograms.md
-      - Tuning curves: process.tuning_curves.md
-      - Decoding: process.decoding.md
-      - Peri-Stimulus: process.perievent.md
-      - Randomization: process.randomize.md
-  # - Plugins:
-  #   - pynalog: pynalog.md
-  #   - pynapplesonfire: pynapplesonfire.md
+    - Miscellaneous: io.md
+    - Basic IO: io.loader.md
+    - Neurosuite: io.neurosuite.md
+    - Phy: io.phy.md
+    - CNMF-E: io.cnmfe.md
+    - Suite2p: io.suite2p.md
   - Contributing: CONTRIBUTING.md
-  - Authors: AUTHORS.md
-  - History: HISTORY.md
+  - Authors: AUTHORS.md  
 theme:
-  name: 'material'
+  name: 'material'  
+  # highlightjs: true
+  # hljs_style: github
+  # hljs_languages:
+  #   - python
   palette:
-    primary: 'green'
+    primary: 'grey'
   # features:
   #   - navigation.tabs
-repo_url: https://github.com/pynapple-org/pynapple
+repo_url: https://github.com/pynapple-org/nwbmatic
 plugins:
-  - mkdocs-jupyter:
-      ignore_h1_titles: True      
-  - search
   - mkdocstrings
+  # - gallery:
+  #      examples_dirs: docs/examples          # path to your example scripts
+  #      gallery_dirs: docs/generated/gallery  # where to save generated gallery
+  #     # ... (other options)
+  - search  # make sure the search plugin is still enabled
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
