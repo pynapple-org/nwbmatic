@@ -1,0 +1,91 @@
+[build-system]
+requires      = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nwbmatic"
+version = "0.1.0"
+description = "NWB creator from various data streams"
+readme = "README.md"
+authors = [{ name = "Guillaume Viejo", email = "guillaume.viejo@gmail.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+        "Development Status :: 3 - Alpha",
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        "Natural Language :: English",
+        "Programming Language :: Python :: 3",
+]
+keywords = ["neuroscience"]
+dependencies = [
+    "pandas>=1.0.3",
+    "numpy>=1.17.4",
+    "scipy>=1.3.2",
+    "numba>=0.46.0",
+    "pynapple",
+    "pynwb",
+    "tabulate",
+    "h5py",
+    "tifffile",
+    "zarr",
+]
+requires-python = ">=3.8"
+
+[tool.setuptools.packages.find]
+include = ["nwbmatic", "nwbmatic.*"]
+
+[project.optional-dependencies]
+dev = [
+  "black",  
+  "isort", 
+  "pip-tools", 
+  "pytest",
+  "flake8",  
+  "coverage"
+  ]
+
+[project.urls]
+homepage = "https://github.com/pynapple-org/nwbmatic"
+documentation = "https://pynapple-org.github.io/nwbmatic/"
+repository = "https://github.com/pynapple-org/nwbmatic"
+
+##########################################################################
+# Optional dependencies
+##########################################################################
+
+[tool.black]
+target-version = ['py36', 'py37', 'py38']
+skip-string-normalization = false
+exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.hg
+    | \.mypy_cache
+    | \.md
+    | \.toml
+    | \.cfg
+    | \.txt
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+    | examples
+  )/
+)
+'''
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+
+[tool.coverage.run]
+omit = [    
+    "nwbmatic/io/loader_gui.py",
+    "nwbmatic/io/ephys_gui.py",
+    "nwbmatic/io/ophys_gui.py",
+    "nwbmatic/core/jitted_functions.py" # coverage doesn't work with numba
+]
