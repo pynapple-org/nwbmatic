@@ -27,7 +27,7 @@ The general workflow of loading a session is described by the infographic below.
 
 The base loader is thus responsible for initializing the NWB file containing the tracking data, the epochs and the session informations.
 
-![title](imgs/base_loader_pynapple.png)
+![title](docs/imgs/base_loader_pynapple.png)
 
 
 
