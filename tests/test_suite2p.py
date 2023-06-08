@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 # @Author: gviejo
 # @Date:   2022-09-09 11:59:30
-# @Last Modified by:   gviejo
-# @Last Modified time: 2022-09-15 13:51:30
+# @Last Modified by:   Guillaume Viejo
+# @Last Modified time: 2023-06-08 17:10:42
 
-"""Tests of Suite2P loader for `pynappple` package."""
+"""Tests of Suite2P loader for `nwbmatic` package."""
 
+import nwbmatic as ntm
 import pynapple as nap
 import numpy as np
 import pandas as pd
@@ -34,9 +35,9 @@ spks = spks[idx]
 @pytest.mark.filterwarnings("ignore")
 def test_suite2p():
     try:
-        data = nap.load_session("nwbfilestest/suite2p", "suite2p")
+        data = ntm.load_session("nwbfilestest/suite2p", "suite2p")
     except:
-        data = nap.load_session("tests/nwbfilestest/suite2p", "suite2p")
+        data = ntm.load_session("tests/nwbfilestest/suite2p", "suite2p")
 
     np.testing.assert_array_almost_equal(F, data.F.values.T)
     np.testing.assert_array_almost_equal(Fneu, data.Fneu.values.T)

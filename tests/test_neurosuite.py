@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 # @Author: gviejo
 # @Date:   2022-04-04 22:35:44
-# @Last Modified by:   gviejo
-# @Last Modified time: 2022-08-19 09:03:33
+# @Last Modified by:   Guillaume Viejo
+# @Last Modified time: 2023-06-08 17:09:56
 
-"""Tests of neurosuite loader for `pynapple` package."""
+"""Tests of neurosuite loader for `nwbmatic` package."""
 
+import nwbmatic as ntm
 import pynapple as nap
 import numpy as np
 import pandas as pd
@@ -16,17 +17,17 @@ import warnings
 @pytest.mark.filterwarnings("ignore")
 def test_load_session():
     try:
-        data = nap.load_session("nwbfilestest/neurosuite", "neurosuite")
+        data = ntm.load_session("nwbfilestest/neurosuite", "neurosuite")
     except:
-        data = nap.load_session("tests/nwbfilestest/neurosuite", "neurosuite")
+        data = ntm.load_session("tests/nwbfilestest/neurosuite", "neurosuite")
 
 
 with warnings.catch_warnings():
     warnings.simplefilter("ignore")
     try:
-        data = nap.load_session("nwbfilestest/neurosuite", "neurosuite")
+        data = ntm.load_session("nwbfilestest/neurosuite", "neurosuite")
     except:
-        data = nap.load_session("tests/nwbfilestest/neurosuite", "neurosuite")
+        data = ntm.load_session("tests/nwbfilestest/neurosuite", "neurosuite")
 
 
 @pytest.mark.parametrize("data", [data])
