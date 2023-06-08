@@ -2,7 +2,12 @@
 
 _NWB creator from various data streams_
 
-TODO badges
+[![image](https://img.shields.io/pypi/v/nwbmatic.svg)](https://pypi.python.org/pypi/nwbmatic)
+[![nwbmatic CI](https://github.com/pynapple-org/nwbmatic/actions/workflows/build.yml/badge.svg)](https://github.com/pynapple-org/nwbmatic/actions/workflows/build.yml)
+[![Coverage Status](https://coveralls.io/repos/github/pynapple-org/nwb/badge.svg?branch=main)](https://coveralls.io/github/pynapple-org/nwb?branch=main)
+[![GitHub issues](https://img.shields.io/github/issues/pynapple-org/nwb)](https://github.com/pynapple-org/nwb/issues)
+![GitHub contributors](https://img.shields.io/github/contributors/pynapple-org/nwb)
+![Twitter Follow](https://img.shields.io/twitter/follow/thepynapple?style=social)
 
 Overview
 --------
