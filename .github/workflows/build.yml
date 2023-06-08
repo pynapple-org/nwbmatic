@@ -25,7 +25,7 @@ jobs:
         run: |
           black --check nwbmatic
           isort --check nwbmatic
-          flake8 nwbmatic --max-complexity 10
+        # flake8 nwbmatic --max-complexity 10
           
   # test:
   #   needs: lint

@@ -9,6 +9,7 @@ import os
 from xml.dom import minidom
 
 import numpy as np
+import pynapple as nap
 from pynwb import NWBHDF5IO
 from pynwb.ecephys import LFP, ElectricalSeries
 
@@ -17,8 +18,6 @@ from .loader import BaseLoader
 from .neurosuite import NeuroSuite
 from .phy import Phy
 from .suite2p import Suite2P
-
-import pynapple as nap
 
 
 def load_session(path=None, session_type=None):

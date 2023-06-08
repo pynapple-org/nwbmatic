@@ -14,6 +14,7 @@ import sys
 
 import numpy as np
 import pandas as pd
+import pynapple as nap
 from pynwb import NWBHDF5IO
 from pynwb.ophys import (
     Fluorescence,
@@ -23,7 +24,6 @@ from pynwb.ophys import (
 )
 from scipy.io.matlab import loadmat
 
-import pynapple as nap
 from .loader import BaseLoader
 from .ophys_gui import App, OphysGUI
 

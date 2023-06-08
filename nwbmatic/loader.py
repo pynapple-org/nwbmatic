@@ -15,13 +15,13 @@ import warnings
 
 import numpy as np
 import pandas as pd
+import pynapple as nap
 import scipy.signal
 from pynwb import NWBHDF5IO, NWBFile, TimeSeries
 from pynwb.behavior import CompassDirection, Position, SpatialSeries
 from pynwb.epoch import TimeIntervals
 from pynwb.file import Subject
 
-import pynapple as nap
 from .loader_gui import App, BaseLoaderGUI
 
 

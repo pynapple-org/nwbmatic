@@ -17,9 +17,9 @@ from xml.dom import minidom
 
 import numpy as np
 import pandas as pd
+import pynapple as nap
 from pynwb import NWBHDF5IO
 
-import pynapple as nap
 from .ephys_gui import App, EphysGUI
 from .loader import BaseLoader
 
