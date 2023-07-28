@@ -75,11 +75,11 @@ class AllenDS(BaseLoader):
         self.nwbfilepath = os.path.join(self.nwb_path, self.nwbfilename)
 
         # load data
+        self.load_spikes()
         self.load_epochs()
         self.load_stimulus_epochs()
         self.load_stimulus_intervals()
         self.load_optogenetic_stimulus_epochs()
-        self.load_spikes()
         self.load_metadata()
 
     def load_epochs(self):
@@ -90,13 +90,13 @@ class AllenDS(BaseLoader):
 
         Add time support based on this epoch
         """
+
         start = 0
-        stop = self.session.optogenetic_stimulation_epochs.iloc[-1]["stop_time"]
+        stop = self._end_time
+
         self.epochs = {
             "session": nap.IntervalSet(start=start, end=stop, time_units="s")
         }
-        # global time support of data
-        self.time_support = nap.IntervalSet(start=start, end=stop, time_units="s")
 
     def load_stimulus_epochs(self):
         """
@@ -147,6 +147,7 @@ class AllenDS(BaseLoader):
         Load optogenetic stimulus epochs into IntervalSet.
 
         """
+
         optogenetic_epochs = self.session.optogenetic_stimulation_epochs
         optogenetic_epochs = optogenetic_epochs.rename(
             columns={
@@ -160,9 +161,15 @@ class AllenDS(BaseLoader):
     def load_spikes(self):
         """
         Extract spike times and load to pynapple workspace as TsGroup
+
+        Also, use last spike time to find the session end time, and configure global time support
         """
         spike_times = self.session.spike_times
         spikes = {n: nap.Ts(t=spike_times[n], time_units="s") for n in spike_times}
+
+        self._end_time = self._get_last_spiketime(spike_times)
+        # global time support of data
+        self.time_support = nap.IntervalSet(start=0, end=self._end_time, time_units="s")
 
         self.spikes = nap.TsGroup(
             spikes,
@@ -170,6 +177,14 @@ class AllenDS(BaseLoader):
             time_units="s",
             **self.session.units.sort_index(),
         )
+
+    def _get_last_spiketime(self, spikes):
+        last_spike_time = -1
+        for unit in spikes:
+            temp_max = max(spikes[unit])
+            if temp_max > last_spike_time:
+                last_spike_time = temp_max
+        return last_spike_time
 
     def load_metadata(self):
         """
