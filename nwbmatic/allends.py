@@ -145,18 +145,24 @@ class AllenDS(BaseLoader):
     def load_optogenetic_stimulus_epochs(self):
         """
         Load optogenetic stimulus epochs into IntervalSet.
-
+        If no optogenetic stimulus in session, set variable to None
         """
 
-        optogenetic_epochs = self.session.optogenetic_stimulation_epochs
-        optogenetic_epochs = optogenetic_epochs.rename(
-            columns={
-                "start_time": "start",
-                "stop_time": "end",
-                "stimulus_name": "label",
-            }
-        )
-        self.optogenetic_stimulus_epochs = self._make_epochs(optogenetic_epochs)
+        try:
+            optogenetic_epochs = self.session.optogenetic_stimulation_epochs
+
+        except KeyError:
+            self.optogenetic_stimulus_epochs = None
+
+        else:
+            optogenetic_epochs = optogenetic_epochs.rename(
+                columns={
+                    "start_time": "start",
+                    "stop_time": "end",
+                    "stimulus_name": "label",
+                }
+            )
+            self.optogenetic_stimulus_epochs = self._make_epochs(optogenetic_epochs)
 
     def load_spikes(self):
         """
