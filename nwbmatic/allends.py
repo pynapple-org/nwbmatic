@@ -10,7 +10,7 @@ To see more info about dataset, see: https://allensdk.readthedocs.io/en/latest/v
 
 @author: Selen Calgin
 Date: 06/19/2023
-Last edit: 07/06/2023 by Selen Calgin
+Last edit: 09/27/2023 by Selen Calgin
 
 """
 import json
@@ -56,7 +56,7 @@ class AllenDS(BaseLoader):
         self.cache = EcephysProjectCache.from_warehouse(manifest=manifest_path)
 
         # get session ID from user
-        self.session_id = self._get_session_id(self.cache)
+        self.session_id = self._get_session_id(self.cache, self.cache_path)
         self.session_path = os.path.join(
             self.cache_path, "session_%d" % self.session_id
         )
@@ -315,7 +315,7 @@ class AllenDS(BaseLoader):
                 file.write(manifest_json)
 
     @staticmethod
-    def _get_session_id(cache):
+    def _get_session_id(cache, cache_path):
         """
         Create dropdown menu of sessions for user to select
         Future dev: add more dataset options; currently only supports Neuropixels
@@ -328,84 +328,95 @@ class AllenDS(BaseLoader):
             session id through user selection
         -------
 
+        EXCEPTION: if "session.txt" file exists (for testing purposes),
+        session id will be taken from here.
         """
-        # Define the session IDs for type 1 and type 2 sessions
-        sessions = cache.get_session_table()
-        type1_sessions = sessions[
-            sessions["session_type"] == "brain_observatory_1.1"
-        ].index.to_list()
-        type2_sessions = sessions[
-            sessions["session_type"] == "functional_connectivity"
-        ].index.to_list()
+        session_file_path = os.path.join(cache_path, "session.txt")
+        if os.path.isfile(session_file_path):
+            with open(session_file_path) as f:
+                session_id = f.readline()
 
-        def type_selected(event):
-            selected_type = type_var.get()
+            return int(session_id)
 
-            # Update the options of the session dropdown menu based on the selected type
-            if selected_type == "Brain observatory":
-                session_dropdown["values"] = type1_sessions
-            elif selected_type == "Functional connectivity":
-                session_dropdown["values"] = type2_sessions
+        else:
 
-        def ok_button_click():
-            global session_id
-            session_id = session_var.get()
+            # Define the session IDs for type 1 and type 2 sessions
+            sessions = cache.get_session_table()
+            type1_sessions = sessions[
+                sessions["session_type"] == "brain_observatory_1.1"
+            ].index.to_list()
+            type2_sessions = sessions[
+                sessions["session_type"] == "functional_connectivity"
+            ].index.to_list()
 
-            # Validate the selection
-            if session_id and session_id.isdigit():
-                # Close the GUI
-                window.destroy()
+            def type_selected(event):
+                selected_type = type_var.get()
 
-            else:
-                # Display an error message if no selection is made
-                error_label.config(text="Please select a session ID.", foreground="red")
+                # Update the options of the session dropdown menu based on the selected type
+                if selected_type == "Brain observatory":
+                    session_dropdown["values"] = type1_sessions
+                elif selected_type == "Functional connectivity":
+                    session_dropdown["values"] = type2_sessions
 
-        # Create the Tkinter window
-        window = tk.Tk()
-        window.title("Session Selection")
+            def ok_button_click():
+                global session_id
+                session_id = session_var.get()
 
-        # Make the window appear on the screen
-        window.attributes("-topmost", True)
+                # Validate the selection
+                if session_id and session_id.isdigit():
+                    # Close the GUI
+                    window.destroy()
 
-        # Create a label and dropdown menu for selecting the session type
-        type_label = ttk.Label(window, text="Select Session Type:")
-        type_label.pack(pady=10)
+                else:
+                    # Display an error message if no selection is made
+                    error_label.config(text="Please select a session ID.", foreground="red")
 
-        type_var = tk.StringVar()
-        type_var.set("Type 1")
+            # Create the Tkinter window
+            window = tk.Tk()
+            window.title("Session Selection")
 
-        type_dropdown = ttk.OptionMenu(
-            window,
-            type_var,
-            "Brain observatory",
-            "Brain observatory",
-            "Functional " "connectivity",
-            command=type_selected,
-        )
-        type_dropdown.pack(pady=5)
+            # Make the window appear on the screen
+            window.attributes("-topmost", True)
 
-        # Create a label and dropdown menu for selecting the session ID
-        session_label = ttk.Label(window, text="Select Session ID:")
-        session_label.pack(pady=10)
+            # Create a label and dropdown menu for selecting the session type
+            type_label = ttk.Label(window, text="Select Session Type:")
+            type_label.pack(pady=10)
 
-        session_var = tk.StringVar()
+            type_var = tk.StringVar()
+            type_var.set("Type 1")
 
-        session_dropdown = ttk.Combobox(
-            window, textvariable=session_var, state="readonly"
-        )
-        session_dropdown.pack(pady=5)
+            type_dropdown = ttk.OptionMenu(
+                window,
+                type_var,
+                "Brain observatory",
+                "Brain observatory",
+                "Functional " "connectivity",
+                command=type_selected,
+            )
+            type_dropdown.pack(pady=5)
 
-        # Initially, populate the session dropdown with type 1 sessions
-        session_dropdown["values"] = type1_sessions
+            # Create a label and dropdown menu for selecting the session ID
+            session_label = ttk.Label(window, text="Select Session ID:")
+            session_label.pack(pady=10)
 
-        # Create an OK button to capture the user selection and close the GUI
-        ok_button = ttk.Button(window, text="OK", command=ok_button_click)
-        ok_button.pack(pady=10)
+            session_var = tk.StringVar()
 
-        # Create a label for displaying error messages
-        error_label = ttk.Label(window, text="", foreground="red")
-        error_label.pack(pady=5)
+            session_dropdown = ttk.Combobox(
+                window, textvariable=session_var, state="readonly"
+            )
+            session_dropdown.pack(pady=5)
 
-        window.mainloop()
+            # Initially, populate the session dropdown with type 1 sessions
+            session_dropdown["values"] = type1_sessions
 
-        return int(session_id)
+            # Create an OK button to capture the user selection and close the GUI
+            ok_button = ttk.Button(window, text="OK", command=ok_button_click)
+            ok_button.pack(pady=10)
+
+            # Create a label for displaying error messages
+            error_label = ttk.Label(window, text="", foreground="red")
+            error_label.pack(pady=5)
+
+            window.mainloop()
+
+            return int(session_id)
