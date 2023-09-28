@@ -1,0 +1,2864 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.1.4">
+    
+    
+      
+        <title>AllenSDK - nwbmatic</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bb3983ee.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#757575">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="grey" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#allen-brain-atlas-neuropixel-loading-tutorial" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="nwbmatic" class="md-header__button md-logo" aria-label="nwbmatic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            nwbmatic
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AllenSDK
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/pynapple-org/nwbmatic" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="nwbmatic" class="md-nav__button md-logo" aria-label="nwbmatic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    nwbmatic
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/pynapple-org/nwbmatic" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nwbmatic-neurosuite-optitrack/" class="md-nav__link">
+        Loading neurosuite-optitrack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nwbmatic-custom-io/" class="md-nav__link">
+        Custom IO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          AllenSDK
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        AllenSDK
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#allen-brain-atlas-neuropixel-loading-tutorial" class="md-nav__link">
+    Allen Brain Atlas Neuropixel Loading Tutorial
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analyzing-neural-activity-in-the-primary-visual-cortex" class="md-nav__link">
+    Analyzing Neural Activity in the Primary Visual Cortex
+  </a>
+  
+    <nav class="md-nav" aria-label="Analyzing Neural Activity in the Primary Visual Cortex">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-metadata" class="md-nav__link">
+    Overview of Metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-units-of-interest-v1" class="md-nav__link">
+    Accessing Units of Interest (V1)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-the-stimuli" class="md-nav__link">
+    Understanding the Stimuli
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyzing-the-neural-response-in-v1-to-visual-stimuli" class="md-nav__link">
+    Analyzing the Neural Response in V1 to Visual Stimuli
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1d-orientation-tuning-curves" class="md-nav__link">
+    1D Orientation Tuning Curves
+  </a>
+  
+    <nav class="md-nav" aria-label="1D Orientation Tuning Curves">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2d-spatial-tuning-curves" class="md-nav__link">
+    2D Spatial Tuning Curves
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Modules
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Modules" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../io/" class="md-nav__link">
+        Miscellaneous
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../io.loader/" class="md-nav__link">
+        Basic IO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../io.neurosuite/" class="md-nav__link">
+        Neurosuite
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../io.phy/" class="md-nav__link">
+        Phy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../io.cnmfe/" class="md-nav__link">
+        CNMF-E
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../io.suite2p/" class="md-nav__link">
+        Suite2p
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AUTHORS/" class="md-nav__link">
+        Authors
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#allen-brain-atlas-neuropixel-loading-tutorial" class="md-nav__link">
+    Allen Brain Atlas Neuropixel Loading Tutorial
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analyzing-neural-activity-in-the-primary-visual-cortex" class="md-nav__link">
+    Analyzing Neural Activity in the Primary Visual Cortex
+  </a>
+  
+    <nav class="md-nav" aria-label="Analyzing Neural Activity in the Primary Visual Cortex">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-metadata" class="md-nav__link">
+    Overview of Metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-units-of-interest-v1" class="md-nav__link">
+    Accessing Units of Interest (V1)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-the-stimuli" class="md-nav__link">
+    Understanding the Stimuli
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyzing-the-neural-response-in-v1-to-visual-stimuli" class="md-nav__link">
+    Analyzing the Neural Response in V1 to Visual Stimuli
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1d-orientation-tuning-curves" class="md-nav__link">
+    1D Orientation Tuning Curves
+  </a>
+  
+    <nav class="md-nav" aria-label="1D Orientation Tuning Curves">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2d-spatial-tuning-curves" class="md-nav__link">
+    2D Spatial Tuning Curves
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/pynapple-org/nwbmatic/edit/master/docs/io.allends.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h2 id="allen-brain-atlas-neuropixel-loading-tutorial">Allen Brain Atlas Neuropixel Loading Tutorial</h2>
+<p>Author: Selen Calgin
+Date created: 13/07/2023
+Last edited: 28/07/2023</p>
+<p>The beauty of Pynapple's IO and the NWBmatic package is that loaders can be customized for any format of data. NWBmatic has many pre-made loaders, one of which being for the Allen Brain Atlas' Neuropixels dataset. The Neuropixels dataset contains electrophysiological data of the visual cortex and thalamus of mice who are shown passive visual stimuli. For more details about the dataset, please see documentation here: https://allensdk.readthedocs.io/en/latest/visual_coding_neuropixels.html</p>
+<p>This tutorial will demonstrate how to use NWMmatic's loader for the Allen Neuropixels data in conjunction with Pynapple for various analyses with the data. NWBmatic loads the data into Pynapple core objects, which can then be used for further analysis.</p>
+<p>Before you begin, make sure you have sufficient storage to download sessions from the database. The session sizes average about ~2gb.</p>
+<p>Let's get started!</p>
+<p>First, import libraries.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># import libraries</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">nwbmatic</span> <span class="k">as</span> <span class="nn">ntm</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span> <span class="nn">pynapple</span> <span class="k">as</span> <span class="nn">nap</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">warnings</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</span></code></pre></div>
+<p>To load a Neuropixels session, as with all data loading in NWBmatic, call NWBmatic's <strong>load_session()</strong> function.
+- <strong><em>path</em></strong>= where the Neuropixels data is downloaded/where it has been downloaded if you've already worked with a specific data session
+- <strong><em>session_type</em></strong>="allends" indicates that we are loading data from the Allen Institute (DS = dataset).</p>
+<p>When you run the following cell, a GUI will appear. Using the GUI, choose from the two types of sessions in the Neuropixels database: 1) Brain observatory or 2) Functional connectivity. Then select the session ID you would like to load.</p>
+<p>Note: <em>If this is your first time loading this session with NWBmatic, the loading will take a while as the data is first downloaded to your local system (to the path you indicated). If you have already loaded this session, loading the data will take about a minute.</em></p>
+<p>Additional note: <em>In this tutorial, I am accessing session #715093703 in Brain Observatory. If you would like to follow along, choose the same session ID. All analyses will work with other sessions too, but may have different values than the ones I comment on here.</em></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># path to where data will be donwloaded</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\Users\scalgi\OneDrive - McGill University\Peyrache Lab\Data\pynapple_test&quot;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># load the data</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">data</span> <span class="o">=</span> <span class="n">ntm</span><span class="o">.</span><span class="n">load_session</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">session_type</span><span class="o">=</span><span class="s2">&quot;allends&quot;</span><span class="p">)</span> <span class="c1"># type: nap.io.allennp.AllenNP</span>
+</span></code></pre></div>
+<p>From our <strong><em>data</em></strong> object, we can access the following attributes:
+   - <strong>epochs</strong>: a dictionary of <strong>IntervalSet</strong> that holds the start and end times of session epochs. In this dataset, <strong>epochs</strong> is trivial: there is only one epoch which is the session itself, under the key <em>session</em>.
+   - <strong>stimulus_epochs_types</strong>: a dictionary of <strong>IntervalSet</strong>s that holds the start and end times of stimulus epochs, defined by the name of the stimulus type
+   - <strong>stimulus_epochs_blocks</strong>: a dictionary of <strong>IntervalSet</strong>s that holds the start and end times of stimulus epoch, defined by the block of the stimulus. Each stimulus block contains one type of stimulus, and the block number indicates the order of when this block of stimulus was shown. Lack of stimulus (i.e. "spontaneous") is not given a block number.
+   - <strong>stimulus_intervals</strong>: a dictionary of <strong>IntervalSet</strong>s that holds the start and end times of each presentation of of each stimulus type
+   - <strong>optogenetic_stimulus_epochs</strong>: an <strong>IntervalSet</strong> that holds the start and end times of optogenetic stimulus epochs. None if session doesn't have it.
+   - <strong>spikes</strong>: a <strong>TsGroup</strong>, which holds spike times for each unit and metadata on each unit
+   - <strong>metadata</strong>: a dictionary of various Pandas Dataframes that holds various types of information:
+      - <strong>stimulus_presentations</strong>: information about each stimulus presentation
+      - <strong>stimulus_conditions</strong>: Each distinct stimulus state is called a "stimulus condition". Table holds additional information about each unique stimulus
+      - <strong>stimulus_parameters</strong>: Dictionary of all stimulus parameters as keys and their range of values as values
+      - <strong>channels</strong>: Information about all channels
+      - <strong>probes</strong>: Information about all probes used
+      - <strong>units</strong>: information about each unit identified in the session, including location in the brain
+   - <strong>time_support</strong>: an <strong>IntervalSet</strong> containing the global time support based on <strong>epochs</strong>
+   - <strong>stimulus_time_support</strong>: an <strong>IntervalSet</strong> containing the intervals of all stimulus blocks, providing a time support for stimuli</p>
+<h1 id="analyzing-neural-activity-in-the-primary-visual-cortex">Analyzing Neural Activity in the Primary Visual Cortex</h1>
+<p>In this tutorial, we will be analyzing the neural activity of neurons in the primary visual cortex while also understanding how to use NWBmatic's loader for Allen Neuropixel data and how this data can be used in conjunction with Pynapple.</p>
+<h2 id="overview-of-metadata">Overview of Metadata</h2>
+<p>First, let's get a grasp of the metadata we have access to.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># data metadata</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stimulus presentations:&quot;</span><span class="p">)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">stimulus_presentations</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;stimulus_presentations&quot;</span><span class="p">]</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">stimulus_presentations</span><span class="p">)</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stimulus conditions&quot;</span><span class="p">)</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">stimulus_conditions</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;stimulus_conditions&quot;</span><span class="p">]</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">stimulus_conditions</span><span class="p">)</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stimulus parameters:&quot;</span><span class="p">)</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="n">stimulus_parameters</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;stimulus_parameters&quot;</span><span class="p">]</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="nb">print</span><span class="p">(</span><span class="n">stimulus_parameters</span><span class="p">)</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Probes:&quot;</span><span class="p">)</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="n">probes</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;probes&quot;</span><span class="p">]</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="nb">print</span><span class="p">(</span><span class="n">probes</span><span class="p">)</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Channels:&quot;</span><span class="p">)</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="n">channels</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;channels&quot;</span><span class="p">]</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="nb">print</span><span class="p">(</span><span class="n">channels</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>Stimulus presentations:
+                         color contrast frame orientation  \
+stimulus_presentation_id                                    
+0                         null     null  null        null   
+1                         null      0.8  null        45.0   
+2                         null      0.8  null         0.0   
+3                         null      0.8  null        45.0   
+4                         null      0.8  null         0.0   
+...                        ...      ...   ...         ...   
+70383                     null      0.8  null        60.0   
+70384                     null      0.8  null        90.0   
+70385                     null      0.8  null        60.0   
+70386                     null      0.8  null        60.0   
+70387                     null      0.8  null        60.0
+
+                                                   phase            size  \
+stimulus_presentation_id                                                   
+0                                                   null            null   
+1                         [3644.93333333, 3644.93333333]    [20.0, 20.0]   
+2                         [3644.93333333, 3644.93333333]    [20.0, 20.0]   
+3                         [3644.93333333, 3644.93333333]    [20.0, 20.0]   
+4                         [3644.93333333, 3644.93333333]    [20.0, 20.0]   
+...                                                  ...             ...   
+70383                                               0.75  [250.0, 250.0]   
+70384                                                0.0  [250.0, 250.0]   
+70385                                                0.0  [250.0, 250.0]   
+70386                                                0.5  [250.0, 250.0]   
+70387                                                0.0  [250.0, 250.0]
+
+                         spatial_frequency   start_time stimulus_block  \
+stimulus_presentation_id                                                 
+0                                     null    13.470683           null   
+1                                     0.08    73.537433            0.0   
+2                                     0.08    73.770952            0.0   
+3                                     0.08    74.021150            0.0   
+4                                     0.08    74.271349            0.0   
+...                                    ...          ...            ...   
+70383                                 0.04  9133.889309           14.0   
+70384                                 0.02  9134.139517           14.0   
+70385                                 0.08  9134.389719           14.0   
+70386                                 0.32  9134.639920           14.0   
+70387                                 0.16  9134.890122           14.0
+
+                            stimulus_name    stop_time temporal_frequency  \
+stimulus_presentation_id                                                    
+0                             spontaneous    73.537433               null   
+1                                  gabors    73.770952                4.0   
+2                                  gabors    74.021150                4.0   
+3                                  gabors    74.271349                4.0   
+4                                  gabors    74.521547                4.0   
+...                                   ...          ...                ...   
+70383                     static_gratings  9134.139517               null   
+70384                     static_gratings  9134.389719               null   
+70385                     static_gratings  9134.639920               null   
+70386                     static_gratings  9134.890122               null   
+70387                     static_gratings  9135.140323               null
+
+                         x_position y_position   duration  \
+stimulus_presentation_id                                    
+0                              null       null  60.066750   
+1                               0.0       30.0   0.233519   
+2                             -30.0      -10.0   0.250199   
+3                              10.0       20.0   0.250199   
+4                             -40.0      -40.0   0.250199   
+...                             ...        ...        ...   
+70383                          null       null   0.250209   
+70384                          null       null   0.250201   
+70385                          null       null   0.250201   
+70386                          null       null   0.250201   
+70387                          null       null   0.250201
+
+                          stimulus_condition_id  
+stimulus_presentation_id                         
+0                                             0  
+1                                             1  
+2                                             2  
+3                                             3  
+4                                             4  
+...                                         ...  
+70383                                      4886  
+70384                                      4806  
+70385                                      4874  
+70386                                      4789  
+70387                                      4809
+
+[70388 rows x 16 columns]
+Stimulus conditions
+                      color contrast  frame    mask opacity orientation  \
+stimulus_condition_id                                                     
+0                      null     null   null    null    null        null   
+1                      null      0.8   null  circle    True        45.0   
+2                      null      0.8   null  circle    True         0.0   
+3                      null      0.8   null  circle    True        45.0   
+4                      null      0.8   null  circle    True         0.0   
+...                     ...      ...    ...     ...     ...         ...   
+5022                   null     null   35.0    null    null        null   
+5023                   null     null  104.0    null    null        null   
+5024                   null     null  112.0    null    null        null   
+5025                   null     null   48.0    null    null        null   
+5026                   null     null    4.0    null    null        null
+
+                                                phase          size  \
+stimulus_condition_id                                                 
+0                                                null          null   
+1                      [3644.93333333, 3644.93333333]  [20.0, 20.0]   
+2                      [3644.93333333, 3644.93333333]  [20.0, 20.0]   
+3                      [3644.93333333, 3644.93333333]  [20.0, 20.0]   
+4                      [3644.93333333, 3644.93333333]  [20.0, 20.0]   
+...                                               ...           ...   
+5022                                             null          null   
+5023                                             null          null   
+5024                                             null          null   
+5025                                             null          null   
+5026                                             null          null
+
+                      spatial_frequency   stimulus_name temporal_frequency  \
+stimulus_condition_id                                                        
+0                                  null     spontaneous               null   
+1                                  0.08          gabors                4.0   
+2                                  0.08          gabors                4.0   
+3                                  0.08          gabors                4.0   
+4                                  0.08          gabors                4.0   
+...                                 ...             ...                ...   
+5022                               null  natural_scenes               null   
+5023                               null  natural_scenes               null   
+5024                               null  natural_scenes               null   
+5025                               null  natural_scenes               null   
+5026                               null  natural_scenes               null
+
+                      units x_position y_position    color_triplet  
+stimulus_condition_id                                               
+0                      null       null       null             null  
+1                       deg        0.0       30.0  [1.0, 1.0, 1.0]  
+2                       deg      -30.0      -10.0  [1.0, 1.0, 1.0]  
+3                       deg       10.0       20.0  [1.0, 1.0, 1.0]  
+4                       deg      -40.0      -40.0  [1.0, 1.0, 1.0]  
+...                     ...        ...        ...              ...  
+5022                   null       null       null             null  
+5023                   null       null       null             null  
+5024                   null       null       null             null  
+5025                   null       null       null             null  
+5026                   null       null       null             null
+
+[5027 rows x 15 columns]
+Stimulus parameters:
+{&#39;color&#39;: array([-1.0, 1.0], dtype=object), &#39;contrast&#39;: array([0.8, 1.0], dtype=object), &#39;frame&#39;: array([0.0, 1.0, 2.0, ..., 3598.0, 3599.0, -1.0], dtype=object), &#39;orientation&#39;: array([45.0, 0.0, 90.0, 315.0, 225.0, 135.0, 270.0, 180.0, 120.0, 150.0,
+       60.0, 30.0], dtype=object), &#39;phase&#39;: array([&#39;[3644.93333333, 3644.93333333]&#39;, &#39;[0.0, 0.0]&#39;,
+       &#39;[21211.93333333, 21211.93333333]&#39;, &#39;0.5&#39;, &#39;0.75&#39;, &#39;0.0&#39;, &#39;0.25&#39;],
+      dtype=object), &#39;size&#39;: array([&#39;[20.0, 20.0]&#39;, &#39;[300.0, 300.0]&#39;, &#39;[250.0, 250.0]&#39;,
+       &#39;[1920.0, 1080.0]&#39;], dtype=object), &#39;spatial_frequency&#39;: array([&#39;0.08&#39;, &#39;[0.0, 0.0]&#39;, &#39;0.04&#39;, 0.32, 0.08, 0.04, 0.02, 0.16],
+      dtype=object), &#39;temporal_frequency&#39;: array([4.0, 8.0, 2.0, 1.0, 15.0], dtype=object), &#39;x_position&#39;: array([0.0, -30.0, 10.0, -40.0, -10.0, 40.0, 30.0, 20.0, -20.0],
+      dtype=object), &#39;y_position&#39;: array([30.0, -10.0, 20.0, -40.0, -20.0, 0.0, -30.0, 40.0, 10.0],
+      dtype=object)}
+Probes:
+          description                 location  sampling_rate  \
+id                                                              
+810755797      probeA  See electrode locations   29999.954846   
+810755799      probeB  See electrode locations   29999.906318   
+810755801      probeC  See electrode locations   29999.985470   
+810755803      probeD  See electrode locations   29999.908100   
+810755805      probeE  See electrode locations   29999.985679   
+810755807      probeF  See electrode locations   30000.028033
+
+           lfp_sampling_rate  has_lfp_data  
+id                                          
+810755797        1249.998119          True  
+810755799        1249.996097          True  
+810755801        1249.999395          True  
+810755803        1249.996171          True  
+810755805        1249.999403          True  
+810755807        1250.001168          True  
+Channels:
+                                                   filtering  \
+id                                                             
+850261194  AP band: 500 Hz high-pass; LFP band: 1000 Hz l...   
+850261196  AP band: 500 Hz high-pass; LFP band: 1000 Hz l...   
+850261202  AP band: 500 Hz high-pass; LFP band: 1000 Hz l...   
+850261206  AP band: 500 Hz high-pass; LFP band: 1000 Hz l...   
+850261212  AP band: 500 Hz high-pass; LFP band: 1000 Hz l...   
+...                                                      ...   
+850264894  AP band: 500 Hz high-pass; LFP band: 1000 Hz l...   
+850264898  AP band: 500 Hz high-pass; LFP band: 1000 Hz l...   
+850264902  AP band: 500 Hz high-pass; LFP band: 1000 Hz l...   
+850264908  AP band: 500 Hz high-pass; LFP band: 1000 Hz l...   
+850264912  AP band: 500 Hz high-pass; LFP band: 1000 Hz l...
+
+           probe_channel_number  probe_horizontal_position   probe_id  \
+id                                                                      
+850261194                     0                         43  810755801   
+850261196                     1                         11  810755801   
+850261202                     4                         43  810755801   
+850261206                     6                         59  810755801   
+850261212                     9                         11  810755801   
+...                         ...                        ...        ...   
+850264894                   374                         59  810755797   
+850264898                   376                         43  810755797   
+850264902                   378                         59  810755797   
+850264908                   381                         11  810755797   
+850264912                   383                         27  810755797
+
+           probe_vertical_position structure_acronym  ecephys_structure_id  \
+id                                                                           
+850261194                       20                PO                1020.0   
+850261196                       20                PO                1020.0   
+850261202                       60                PO                1020.0   
+850261206                       80                PO                1020.0   
+850261212                      100                PO                1020.0   
+...                            ...               ...                   ...   
+850264894                     3760              None                   NaN   
+850264898                     3780              None                   NaN   
+850264902                     3800              None                   NaN   
+850264908                     3820              None                   NaN   
+850264912                     3840              None                   NaN
+
+          ecephys_structure_acronym  anterior_posterior_ccf_coordinate  \
+id                                                                       
+850261194                        PO                             7648.0   
+850261196                        PO                             7651.0   
+850261202                        PO                             7660.0   
+850261206                        PO                             7665.0   
+850261212                        PO                             7674.0   
+...                             ...                                ...   
+850264894                       NaN                             7112.0   
+850264898                       NaN                             7107.0   
+850264902                       NaN                             7102.0   
+850264908                       NaN                             7094.0   
+850264912                       NaN                             7089.0
+
+           dorsal_ventral_ccf_coordinate  left_right_ccf_coordinate  
+id                                                                   
+850261194                         3645.0                     7567.0  
+850261196                         3636.0                     7566.0  
+850261202                         3610.0                     7564.0  
+850261206                         3592.0                     7562.0  
+850261212                         3566.0                     7560.0  
+...                                  ...                        ...  
+850264894                          -53.0                     7809.0  
+850264898                          -69.0                     7813.0  
+850264902                          -85.0                     7818.0  
+850264908                         -109.0                     7825.0  
+850264912                         -126.0                     7829.0
+
+[2219 rows x 11 columns]
+</code></pre></div>
+<h2 id="accessing-units-of-interest-v1">Accessing Units of Interest (V1)</h2>
+<p>Recall that we want to look at neuronal activity in V1.</p>
+<p>All unit information is stored within <strong>data.spikes</strong>, which is a Pynapple object called TsGroup. data.spikes holds spike times for each unit alongside metadata information about each unit, including in which brain structure they are recorded from.</p>
+<p>Let's see the units we have in our session:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">spikes</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">spikes</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">spikes</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>[950910352 950910364 950910371 950910392 950910435 950910463 950910531
+ 950910549 950910558 950910576 950910603 950910651 950910664 950910671
+ 950910727 950910742 950910757 950910778 950910834 950910861 950910889
+ 950910897 950910904 950910941 950911006 950911040 950911088 950911195
+ 950911223 950911266 950911286 950911467 950911563 950911586 950911593
+ 950911601 950911656 950911677 950911684 950911691 950911698 950911704
+ 950911732 950911873 950911880 950911932 950911986 950912018 950912065
+ 950912109 950912164 950912190 950912214 950912226 950912249 950912283
+ 950912293 950912326 950912361 950912384 950912396 950912406 950912417
+ 950912427 950912448 950912460 950912473 950912511 950912601 950912646
+ 950912803 950912814 950912928 950912940 950912952 950913000 950913031
+ 950913096 950913409 950913422 950913456 950913470 950913506 950913517
+ 950913527 950913537 950913547 950913567 950913588 950913652 950913676
+ 950913684 950913766 950913796 950913806 950913850 950913877 950913893
+ 950913901 950913908 950913921 950913929 950913938 950913954 950913976
+ 950913983 950913990 950914026 950914067 950914103 950914130 950914157
+ 950914189 950914197 950914219 950914233 950914294 950914310 950914318
+ 950914348 950914359 950914413 950914424 950914435 950914538 950914625
+ 950914635 950914660 950914683 950914720 950914754 950914766 950914780
+ 950914791 950914812 950914832 950914856 950914868 950914882 950914923
+ 950914940 950914954 950914980 950915023 950915054 950915068 950915101
+ 950915304 950915378 950915441 950915483 950915921 950915947 950915984
+ 950915997 950916009 950916273 950916377 950916395 950916413 950916447
+ 950916519 950916603 950916733 950916754 950916921 950916980 950917063
+ 950917295 950917313 950917332 950917411 950917604 950917669 950917769
+ 950917785 950917849 950917899 950918052 950918175 950918191 950918246
+ 950918261 950918280 950918294 950918310 950918344 950918362 950918381
+ 950918422 950918491 950918570 950918695 950918745 950918802 950918821
+ 950918846 950918902 950918919 950918936 950918955 950919022 950919040
+ 950919054 950919086 950919104 950919120 950919154 950919212 950919249
+ 950919283 950919387 950919456 950919496 950919676 950919748 950919806
+ 950919863 950919900 950919921 950919945 950919993 950920017 950920092
+ 950920151 950920290 950920309 950920434 950920756 950920777 950920827
+ 950920843 950920912 950920929 950920961 950920998 950921013 950921034
+ 950921088 950921163 950921176 950921299 950921442 950921601 950921709
+ 950922041 950922122 950922146 950922174 950922208 950922234 950922258
+ 950922286 950922329 950922351 950922368 950922383 950922466 950922494
+ 950922551 950922576 950922600 950922641 950922659 950922684 950922706
+ 950922725 950922745 950922781 950922841 950922883 950922896 950922929
+ 950922961 950922994 950923011 950923049 950923089 950923121 950923165
+ 950923181 950923217 950923236 950923254 950923348 950923365 950923405
+ 950923464 950923485 950923606 950923669 950923690 950923730 950923754
+ 950923859 950923880 950923897 950923914 950923939 950923958 950923976
+ 950924072 950924089 950924107 950924147 950924173 950924212 950924231
+ 950924272 950924372 950924413 950924434 950924452 950924500 950924519
+ 950924598 950924635 950924693 950924735 950924753 950924800 950924845
+ 950924883 950924899 950925057 950925092 950925112 950925132 950925149
+ 950925166 950925187 950925212 950925267 950925332 950925368 950925383
+ 950925400 950925438 950925455 950925508 950925555 950925626 950925644
+ 950925664 950925707 950925730 950925749 950925786 950925850 950925902
+ 950925925 950925950 950925967 950925983 950926001 950926055 950926095
+ 950926208 950926709 950926787 950926805 950926867 950926886 950926928
+ 950927002 950927024 950927046 950927066 950927229 950927323 950927341
+ 950927745 950927775 950928113 950928160 950928179 950928198 950928255
+ 950928387 950928423 950928440 950928461 950928497 950928518 950928536
+ 950928588 950928686 950928759 950928795 950928855 950928873 950928891
+ 950928911 950928976 950928991 950929009 950929067 950929083 950929101
+ 950929134 950929153 950929171 950929188 950929206 950929227 950929245
+ 950929286 950929377 950929400 950929420 950929495 950929514 950929531
+ 950929570 950929592 950929663 950929697 950929750 950929787 950929804
+ 950929824 950929882 950930105 950930145 950930215 950930237 950930276
+ 950930340 950930358 950930375 950930392 950930407 950930423 950930437
+ 950930454 950930522 950930795 950930866 950930888 950930964 950930985
+ 950931004 950931043 950931118 950931164 950931181 950931236 950931254
+ 950931272 950931315 950931363 950931423 950931458 950931517 950931533
+ 950931565 950931581 950931617 950931656 950931727 950931751 950931770
+ 950931805 950931853 950931878 950931899 950931959 950932032 950932087
+ 950932102 950932445 950932563 950932578 950932696 950932820 950932888
+ 950932943 950932963 950932980 950933012 950933040 950933057 950933173
+ 950933208 950933226 950933426 950933536 950933555 950933606 950933660
+ 950933698 950933732 950933840 950933890 950933907 950933924 950933960
+ 950934028 950934044 950934181 950934229 950934268 950934286 950934304
+ 950934728 950934765 950934843 950934971 950934992 950935070 950935165
+ 950935201 950935269 950935285 950935317 950935402 950935460 950935478
+ 950935499 950935575 950935610 950935658 950935720 950935755 950935907
+ 950935925 950935942 950935975 950936008 950936025 950936093 950936113
+ 950936162 950936177 950936194 950936224 950936272 950936292 950936326
+ 950936345 950936412 950936465 950936482 950936572 950936639 950936656
+ 950936675 950936710 950936727 950936759 950936855 950936870 950936908
+ 950936941 950936979 950936992 950937050 950937068 950937114 950937333
+ 950937929 950937990 950938074 950938091 950938171 950938279 950938344
+ 950938459 950938511 950938598 950938629 950938657 950938700 950938797
+ 950938924 950938960 950938978 950939028 950939079 950939114 950939168
+ 950939257 950939347 950939479 950939509 950939523 950939641 950939678
+ 950939945 950940001 950940023 950940040 950940104 950940121 950940157
+ 950940171 950940185 950940200 950940219 950940237 950940311 950940389
+ 950940437 950940453 950940467 950940507 950940526 950940545 950940615
+ 950940631 950940649 950940671 950940688 950940718 950940859 950940928
+ 950941494 950941529 950941583 950941776 950941795 950942129 950942155
+ 950942199 950942235 950942252 950942304 950942974 950943198 950943517
+ 950943580 950943625 950943695 950943735 950943756 950943795 950943813
+ 950943830 950943877 950944146 950944160 950944212 950944228 950944247
+ 950944259 950944276 950944444 950944566 950944600 950944675 950944706
+ 950944769 950944784 950944815 950944827 950944858 950944872 950944952
+ 950944968 950944989 950945008 950945042 950945060 950945077 950945127
+ 950945180 950945232 950945252 950945295 950945314 950945467 950945518
+ 950945554 950945572 950945588 950945625 950945660 950945768 950945783
+ 950945817 950945986 950946003 950946022 950946068 950946155 950946176
+ 950946192 950946228 950946310 950946327 950946343 950946376 950946437
+ 950946497 950946641 950946658 950946673 950946741 950947140 950947156
+ 950947211 950947224 950947271 950947368 950947412 950947488 950947533
+ 950947555 950947626 950947647 950947665 950947763 950947778 950947798
+ 950947832 950947849 950947868 950947941 950947963 950947990 950948009
+ 950948026 950948063 950948092 950948139 950948174 950948210 950948246
+ 950948281 950948306 950948371 950948396 950948414 950948488 950948527
+ 950948547 950948564 950948631 950948648 950948683 950948716 950948744
+ 950948778 950948793 950948826 950948853 950948867 950948881 950948970
+ 950949089 950949118 950949200 950949248 950949428 950949449 950949628
+ 950949861 950949933 950949961 950949994 950950009 950950031 950950101
+ 950950116 950950160 950950176 950950224 950950270 950950308 950950382
+ 950950433 950950576 950950740 950950756 950950810 950950880 950950919
+ 950951153 950951364 950951511 950951525 950951577 950951613 950951636
+ 950951678 950951702 950951791 950951829 950951840 950951851 950951879
+ 950951891 950951902 950951940 950951950 950951979 950952002 950952213
+ 950952241 950952256 950952312 950952336 950952386 950952629 950952690
+ 950952704 950952719 950952734 950952748 950952845 950952881 950952969
+ 950952985 950953119 950953159 950953187 950953293 950953417 950953703
+ 950954163 950954180 950954195 950954630 950954647 950954737 950954793
+ 950954823 950954838 950954886 950954905 950954922 950954941 950954983
+ 950955053 950955181 950955212 950955361 950955399 950955414 950955543
+ 950955784 950955833 950955844 950955897 950955951 950955965 950955974
+ 950956019 950956030 950956043 950956100 950956148 950956205 950956259
+ 950956297 950956336 950956386 950956399 950956413 950956435 950956493
+ 950956504 950956514 950956527 950956541 950956563 950956592 950956604
+ 950956616 950956630 950956667 950956680 950956778 950956835 950956845
+ 950956870 950956911 950956952 950957053 950957270 950957282 950957295
+ 950957320 950957408]
+</code></pre></div>
+<p>To see what metadata is stored within <strong>spikes</strong>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">spikes</span><span class="o">.</span><span class="n">metadata_columns</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>[&#39;rate&#39;, &#39;waveform_PT_ratio&#39;, &#39;waveform_amplitude&#39;, &#39;amplitude_cutoff&#39;, &#39;cluster_id&#39;, &#39;cumulative_drift&#39;, &#39;d_prime&#39;, &#39;firing_rate&#39;, &#39;isi_violations&#39;, &#39;isolation_distance&#39;, &#39;L_ratio&#39;, &#39;local_index&#39;, &#39;max_drift&#39;, &#39;nn_hit_rate&#39;, &#39;nn_miss_rate&#39;, &#39;peak_channel_id&#39;, &#39;presence_ratio&#39;, &#39;waveform_recovery_slope&#39;, &#39;waveform_repolarization_slope&#39;, &#39;silhouette_score&#39;, &#39;snr&#39;, &#39;waveform_spread&#39;, &#39;waveform_velocity_above&#39;, &#39;waveform_velocity_below&#39;, &#39;waveform_duration&#39;, &#39;filtering&#39;, &#39;probe_channel_number&#39;, &#39;probe_horizontal_position&#39;, &#39;probe_id&#39;, &#39;probe_vertical_position&#39;, &#39;structure_acronym&#39;, &#39;ecephys_structure_id&#39;, &#39;ecephys_structure_acronym&#39;, &#39;anterior_posterior_ccf_coordinate&#39;, &#39;dorsal_ventral_ccf_coordinate&#39;, &#39;left_right_ccf_coordinate&#39;, &#39;probe_description&#39;, &#39;location&#39;, &#39;probe_sampling_rate&#39;, &#39;probe_lfp_sampling_rate&#39;, &#39;probe_has_lfp_data&#39;]
+</code></pre></div>
+<p>Now, we want to get the units that are in the primary visual cortex (V1), as these are neurons that are most likely to have orientation tuning and tuning to locations in space. The metadata column that corresponds to location in the brain is "ecephys_structure_acronym".</p>
+<p>We can use <strong>TsGroup</strong>'s functionality to organize the units based on columns in the unit's metadata. This function is called <strong>getby_category()</strong>. Let's see how we can use it for our purposes:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># organize units by structure</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">units_structures</span> <span class="o">=</span> <span class="n">spikes</span><span class="o">.</span><span class="n">getby_category</span><span class="p">(</span><span class="s2">&quot;ecephys_structure_acronym&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p><em>units_structures</em> is a dictionary of <strong>TsGroups</strong>, with the structure names as keys.</p>
+<p>Let's look at the names of the structures we are working on by getting the keys of the dictionary.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># take a look at the structure names</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">units_structures</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>dict_keys([&#39;APN&#39;, &#39;CA1&#39;, &#39;CA3&#39;, &#39;DG&#39;, &#39;LGd&#39;, &#39;LP&#39;, &#39;PO&#39;, &#39;PoT&#39;, &#39;VISam&#39;, &#39;VISl&#39;, &#39;VISp&#39;, &#39;VISpm&#39;, &#39;VISrl&#39;, &#39;grey&#39;])
+</code></pre></div>
+<p>To get an overview of how the units are distributed by brain structure, let's quickly count the number of units per brain area and plot it:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># getting a list of brain areas</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">brain_areas</span> <span class="o">=</span> <span class="n">units_structures</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1"># counting the length of the TsGroup (i.e. number of units) associated with each brain structure</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">unit_count_by_brain_region</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">units_structures</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">brain_areas</span><span class="p">]</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1"># plot</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">brain_areas</span><span class="p">,</span><span class="n">unit_count_by_brain_region</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>&lt;BarContainer object of 14 artists&gt;
+</code></pre></div>
+<p><img alt="png" src="nwbmatic-pynapple-allen-tutorial_files/nwbmatic-pynapple-allen-tutorial_17_1.png" /></p>
+<p>Nice! Looks like we have a decent number of units in the primary visual cortex ("VISp"). Let's retrieve these units from the dictionary <em>units_structures</em>.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># get the TsGroup of units in V1</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">v1_units</span> <span class="o">=</span> <span class="n">units_structures</span><span class="p">[</span><span class="s2">&quot;VISp&quot;</span><span class="p">]</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># how many units did we get?</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of units in V1: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">v1_units</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>Number of units in V1: 60
+</code></pre></div>
+<p>Now, from the units in V1, we also want to get the units that have a high signal-to-noise (SNR) ratio. If you look above, you can see that this information is also stored in the metadata under "snr".</p>
+<p>We can use the <strong>TsGroup</strong>'s <em>getby_threshold()</em> function to do this. Rather than a dictionary of TsGroups, this function just returns a new TsGroup with units that obey the given threshold.</p>
+<p>Let's get units with an SNR &gt; 4:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">v1_high_snr_units</span> <span class="o">=</span> <span class="n">v1_units</span><span class="o">.</span><span class="n">getby_threshold</span><span class="p">(</span><span class="s2">&quot;snr&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="c1"># default operator is &gt;, but other ones can be passed via an optional argument</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># how many units did we get?</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of units in V1: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">v1_high_snr_units</span><span class="p">))</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1"># what are the IDs of the units?</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">v1_unit_IDs</span> <span class="o">=</span> <span class="n">v1_high_snr_units</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;V1 Unit IDs: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">v1_unit_IDs</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>Number of units in V1: 6
+V1 Unit IDs: [950930985, 950931458, 950931533, 950931727, 950931751, 950932696]
+</code></pre></div>
+<p>Awesome! We can quickly visualize the units' activity over time with <strong>TsGroup</strong>'s <em>count()</em> function, which counts the number of spikes of each unit within intervals of time.</p>
+<p>The default intervals of the <em>count()</em> function are based on the global time support of the data. In this database, the global session epoch is the start and end time of the entire session. Let's first use the default interval and specify the bin size in seconds. Here, I'm setting the bin size to 1s.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">spike_counts</span> <span class="o">=</span> <span class="n">v1_high_snr_units</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">bin_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">spike_counts</span>
+</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>950930985</th>
+      <th>950931458</th>
+      <th>950931533</th>
+      <th>950931727</th>
+      <th>950931751</th>
+      <th>950932696</th>
+    </tr>
+    <tr>
+      <th>Time (s)</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1.5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2.5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3.5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4.5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9636.5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9637.5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9638.5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9639.5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9640.5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>9641 rows × 6 columns</p>
+</div>
+
+<p>Nice! With this table, we have everything we need to plot spike counts per time interval.
+Let's go ahead and plot it for each of our units. This will take a few minutes since the bin number is so high.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Create 1x6 grid of subplots</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">time_intervals</span> <span class="o">=</span> <span class="n">spike_counts</span><span class="o">.</span><span class="n">index</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># Iterate over each neuron and plot the spike count data</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">unit_id</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">v1_unit_IDs</span><span class="p">,</span> <span class="n">axs</span><span class="p">)):</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">time_intervals</span><span class="p">,</span> <span class="n">spike_counts</span><span class="p">[</span><span class="n">unit_id</span><span class="p">])</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Spike Count&#39;</span><span class="p">)</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">unit_id</span><span class="p">)</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></code></pre></div>
+<p><img alt="png" src="nwbmatic-pynapple-allen-tutorial_files/nwbmatic-pynapple-allen-tutorial_25_0.png" /></p>
+<h2 id="understanding-the-stimuli">Understanding the Stimuli</h2>
+<p>Now that we've retrieved our units in V1, let's take a look at the kind of stimuli we are working with and how stimulus epochs are organized.</p>
+<p>First, let's look at stimulus epochs by type and by block.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">stimulus_epochs_types</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">stimulus_epochs_types</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">stimulus_epochs_blocks</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">stimulus_epochs_blocks</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stimulus names: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stimulus_epochs_types</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stimulus blocks: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stimulus_epochs_blocks</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>Stimulus names: dict_keys([&#39;drifting_gratings&#39;, &#39;flashes&#39;, &#39;gabors&#39;, &#39;natural_movie_one&#39;, &#39;natural_movie_three&#39;, &#39;natural_scenes&#39;, &#39;spontaneous&#39;, &#39;static_gratings&#39;])
+Stimulus blocks: dict_keys([0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, &#39;null&#39;])
+</code></pre></div>
+<p>Each block interval provides the beginning and end of the given block of stimulus presentations, stored is <em>stimulus_epochs_blocks</em>
+Each stimulus blocks contains only one type of stimulus, however, there are multiple blocks of one kind of stimulus. Each <strong>IntervalSet</strong> in <em>stimulus_epochs_types</em> represents one block of stimulus.
+Individual stimulus interval of a given stimulus type is stored in <em>stimulus_intervals</em>.</p>
+<p>To see a visualization of how the stimuli are organized, see here: chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://brainmapportal-live-4cc80a57cd6e400d854-f7fdcae.divio-media.net/filer_public/0f/5d/0f5d22c9-f8f6-428c-9f7a-2983631e72b4/neuropixels_cheat_sheet_nov_2019.pdf</p>
+<p>For example, from Allen Neuropixels' documentation, we know that drifting gratings are shown in multiple blocks, specifically block 2, 5, and 7. Within these blocks, there are individual stimulus presentations of various conditions.</p>
+<p>Let's take a look:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Drifting gratings epochs:</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">drifting_gratings</span> <span class="o">=</span> <span class="n">stimulus_epochs_types</span><span class="p">[</span><span class="s2">&quot;drifting_gratings&quot;</span><span class="p">]</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Drifting gratings epochs: </span><span class="se">\n</span><span class="si">%s</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span><span class="n">drifting_gratings</span><span class="p">)</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="c1"># Block 2, 5 and 7 epochs</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Block 2 intervals </span><span class="se">\n</span><span class="si">%s</span><span class="s2">: &quot;</span> <span class="o">%</span> <span class="n">stimulus_epochs_blocks</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Block 5 intervals </span><span class="se">\n</span><span class="si">%s</span><span class="s2">: &quot;</span> <span class="o">%</span> <span class="n">stimulus_epochs_blocks</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Block 7 intervals </span><span class="se">\n</span><span class="si">%s</span><span class="s2">: &quot;</span> <span class="o">%</span> <span class="n">stimulus_epochs_blocks</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>Drifting gratings epochs: 
+         start          end
+0  1574.774823  2174.275707
+1  3166.137683  3765.638457
+2  4697.416823  5380.987797
+
+Block 2 intervals 
+         start          end
+0  1574.774823  2174.275707: 
+Block 5 intervals 
+         start          end
+0  3166.137683  3765.638457: 
+Block 7 intervals 
+         start          end
+0  4697.416823  5380.987797:
+</code></pre></div>
+<p>Notice how the epochs defined by stimulus type and block line up? <em>type</em> and <em>block</em> are two ways of organizing the stimulus epochs, which one you use depends on your analysis goals.</p>
+<p>Now, let's take a look at the stimulus presentation intervals of all drifting gratings:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># get dictionary of stimulus intervals organized by stimulus type</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">stimulus_intervals</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">stimulus_intervals</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># get stimulus intervals for drifting gratings</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="n">drifting_gratings_intervals</span> <span class="o">=</span> <span class="n">stimulus_intervals</span><span class="p">[</span><span class="s1">&#39;drifting_gratings&#39;</span><span class="p">]</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="n">drifting_gratings_intervals</span>
+</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>start</th>
+      <th>end</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1574.774823</td>
+      <td>1576.776513</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1577.777347</td>
+      <td>1579.779027</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1580.779833</td>
+      <td>1582.781563</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1583.782367</td>
+      <td>1585.784047</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1586.784883</td>
+      <td>1588.786553</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5366.976107</td>
+      <td>5368.977777</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>5369.978603</td>
+      <td>5371.980283</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>5372.981107</td>
+      <td>5374.982807</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>5375.983663</td>
+      <td>5377.985343</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>5378.986127</td>
+      <td>5380.987797</td>
+    </tr>
+  </tbody>
+</table>
+<p>628 rows × 2 columns</p>
+</div>
+
+<p>Notice that the first start time and the last end time matches that of the start and end time of the drifting gratings stimulus epochs.</p>
+<p>To get the stimulus interval for only one of the blocks, you can use <strong>IntervalSet</strong>'s <em>intersect</em> function, which finds the common times between two <strong>IntervalSet</strong>s. Let's find the stimulus intervals of drifting gratings in block 2 as an example:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">block2_stimulus_epochs</span> <span class="o">=</span> <span class="n">stimulus_epochs_blocks</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># get block 2 of stimulus epochs</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="c1"># intersect block 2 intervals with drifting gratings intervals to get drifting gratings in block 2 only</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="n">drifting_gratings_block_2_intervals</span> <span class="o">=</span> <span class="n">drifting_gratings_intervals</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="n">block2_stimulus_epochs</span><span class="p">)</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="c1"># what does this look like?</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="n">drifting_gratings_block_2_intervals</span>
+</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>start</th>
+      <th>end</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1574.774823</td>
+      <td>1576.776513</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1577.777347</td>
+      <td>1579.779027</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1580.779833</td>
+      <td>1582.781563</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1583.782367</td>
+      <td>1585.784047</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1586.784883</td>
+      <td>1588.786553</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2160.263967</td>
+      <td>2162.265657</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2163.266503</td>
+      <td>2165.268183</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2166.269007</td>
+      <td>2168.270667</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2169.271543</td>
+      <td>2171.273213</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2172.274017</td>
+      <td>2174.275707</td>
+    </tr>
+  </tbody>
+</table>
+<p>200 rows × 2 columns</p>
+</div>
+
+<p>To look at the overall set of available parameters of the stimuli, we can access it through the metadata as follows:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">stimulus_parameters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">:</span><span class="si">{</span><span class="n">values</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>color:[-1.0 1.0]
+contrast:[0.8 1.0]
+frame:[0.0 1.0 2.0 ... 3598.0 3599.0 -1.0]
+orientation:[45.0 0.0 90.0 315.0 225.0 135.0 270.0 180.0 120.0 150.0 60.0 30.0]
+phase:[&#39;[3644.93333333, 3644.93333333]&#39; &#39;[0.0, 0.0]&#39;
+ &#39;[21211.93333333, 21211.93333333]&#39; &#39;0.5&#39; &#39;0.75&#39; &#39;0.0&#39; &#39;0.25&#39;]
+size:[&#39;[20.0, 20.0]&#39; &#39;[300.0, 300.0]&#39; &#39;[250.0, 250.0]&#39; &#39;[1920.0, 1080.0]&#39;]
+spatial_frequency:[&#39;0.08&#39; &#39;[0.0, 0.0]&#39; &#39;0.04&#39; 0.32 0.08 0.04 0.02 0.16]
+temporal_frequency:[4.0 8.0 2.0 1.0 15.0]
+x_position:[0.0 -30.0 10.0 -40.0 -10.0 40.0 30.0 20.0 -20.0]
+y_position:[30.0 -10.0 20.0 -40.0 -20.0 0.0 -30.0 40.0 10.0]
+</code></pre></div>
+<p>Great, now that we have a good understanding of the stimuli in this session, we can start examining the activity of the V1 units of interest in relation to the  stimuli.</p>
+<h2 id="analyzing-the-neural-response-in-v1-to-visual-stimuli">Analyzing the Neural Response in V1 to Visual Stimuli</h2>
+<p>Now that we've acquired units from V1 and have explored our data and stimuli, we now do some analysis. Specifically, we're going to look at the response of V1 neurons to visual stimuli.</p>
+<h2 id="1d-orientation-tuning-curves">1D Orientation Tuning Curves</h2>
+<p><em>This section of the tutorial is adopted from Seigle et al (2021) Dataset Tutorial by Dhruv Mehrotra</em>: https://github.com/PeyracheLab/pynacollada/blob/main/pynacollada/Pynapple%20Paper%20Figures/Siegle%202021/Siegle_dataset.ipynb</p>
+<p>V1 neurons are known to have orientation specific tuning. In this dataset, we have static grating stimuli which varies in orientation. We are going to compute the tuning curve of V1 neurons to the orientations.</p>
+<p>To do this, first we need to get information about the static grating stimulus presentations, as follows:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">drifting_gratings_presentations</span> <span class="o">=</span> <span class="n">stimulus_presentations</span><span class="p">[</span><span class="n">stimulus_presentations</span><span class="p">[</span><span class="s1">&#39;stimulus_name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;drifting_gratings&#39;</span><span class="p">]</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">drifting_gratings_presentations</span>
+</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>contrast</th>
+      <th>frame</th>
+      <th>orientation</th>
+      <th>phase</th>
+      <th>size</th>
+      <th>spatial_frequency</th>
+      <th>start_time</th>
+      <th>stimulus_block</th>
+      <th>stimulus_name</th>
+      <th>stop_time</th>
+      <th>temporal_frequency</th>
+      <th>x_position</th>
+      <th>y_position</th>
+      <th>duration</th>
+      <th>stimulus_condition_id</th>
+    </tr>
+    <tr>
+      <th>stimulus_presentation_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3798</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>315.0</td>
+      <td>[21211.93333333, 21211.93333333]</td>
+      <td>[250.0, 250.0]</td>
+      <td>0.04</td>
+      <td>1574.774823</td>
+      <td>2.0</td>
+      <td>drifting_gratings</td>
+      <td>1576.776513</td>
+      <td>4.0</td>
+      <td>null</td>
+      <td>null</td>
+      <td>2.00169</td>
+      <td>246</td>
+    </tr>
+    <tr>
+      <th>3799</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>90.0</td>
+      <td>[21211.93333333, 21211.93333333]</td>
+      <td>[250.0, 250.0]</td>
+      <td>0.04</td>
+      <td>1577.777347</td>
+      <td>2.0</td>
+      <td>drifting_gratings</td>
+      <td>1579.779027</td>
+      <td>8.0</td>
+      <td>null</td>
+      <td>null</td>
+      <td>2.00168</td>
+      <td>247</td>
+    </tr>
+    <tr>
+      <th>3800</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>225.0</td>
+      <td>[21211.93333333, 21211.93333333]</td>
+      <td>[250.0, 250.0]</td>
+      <td>0.04</td>
+      <td>1580.779833</td>
+      <td>2.0</td>
+      <td>drifting_gratings</td>
+      <td>1582.781563</td>
+      <td>2.0</td>
+      <td>null</td>
+      <td>null</td>
+      <td>2.00173</td>
+      <td>248</td>
+    </tr>
+    <tr>
+      <th>3801</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>90.0</td>
+      <td>[21211.93333333, 21211.93333333]</td>
+      <td>[250.0, 250.0]</td>
+      <td>0.04</td>
+      <td>1583.782367</td>
+      <td>2.0</td>
+      <td>drifting_gratings</td>
+      <td>1585.784047</td>
+      <td>2.0</td>
+      <td>null</td>
+      <td>null</td>
+      <td>2.00168</td>
+      <td>249</td>
+    </tr>
+    <tr>
+      <th>3802</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>135.0</td>
+      <td>[21211.93333333, 21211.93333333]</td>
+      <td>[250.0, 250.0]</td>
+      <td>0.04</td>
+      <td>1586.784883</td>
+      <td>2.0</td>
+      <td>drifting_gratings</td>
+      <td>1588.786553</td>
+      <td>8.0</td>
+      <td>null</td>
+      <td>null</td>
+      <td>2.00167</td>
+      <td>250</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>49426</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>135.0</td>
+      <td>[21211.93333333, 21211.93333333]</td>
+      <td>[250.0, 250.0]</td>
+      <td>0.04</td>
+      <td>5366.976107</td>
+      <td>7.0</td>
+      <td>drifting_gratings</td>
+      <td>5368.977777</td>
+      <td>15.0</td>
+      <td>null</td>
+      <td>null</td>
+      <td>2.00167</td>
+      <td>274</td>
+    </tr>
+    <tr>
+      <th>49427</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>180.0</td>
+      <td>[21211.93333333, 21211.93333333]</td>
+      <td>[250.0, 250.0]</td>
+      <td>0.04</td>
+      <td>5369.978603</td>
+      <td>7.0</td>
+      <td>drifting_gratings</td>
+      <td>5371.980283</td>
+      <td>8.0</td>
+      <td>null</td>
+      <td>null</td>
+      <td>2.00168</td>
+      <td>260</td>
+    </tr>
+    <tr>
+      <th>49428</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>0.0</td>
+      <td>[21211.93333333, 21211.93333333]</td>
+      <td>[250.0, 250.0]</td>
+      <td>0.04</td>
+      <td>5372.981107</td>
+      <td>7.0</td>
+      <td>drifting_gratings</td>
+      <td>5374.982807</td>
+      <td>1.0</td>
+      <td>null</td>
+      <td>null</td>
+      <td>2.00170</td>
+      <td>251</td>
+    </tr>
+    <tr>
+      <th>49429</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>180.0</td>
+      <td>[21211.93333333, 21211.93333333]</td>
+      <td>[250.0, 250.0]</td>
+      <td>0.04</td>
+      <td>5375.983663</td>
+      <td>7.0</td>
+      <td>drifting_gratings</td>
+      <td>5377.985343</td>
+      <td>4.0</td>
+      <td>null</td>
+      <td>null</td>
+      <td>2.00168</td>
+      <td>282</td>
+    </tr>
+    <tr>
+      <th>49430</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>270.0</td>
+      <td>[21211.93333333, 21211.93333333]</td>
+      <td>[250.0, 250.0]</td>
+      <td>0.04</td>
+      <td>5378.986127</td>
+      <td>7.0</td>
+      <td>drifting_gratings</td>
+      <td>5380.987797</td>
+      <td>4.0</td>
+      <td>null</td>
+      <td>null</td>
+      <td>2.00167</td>
+      <td>279</td>
+    </tr>
+  </tbody>
+</table>
+<p>628 rows × 16 columns</p>
+</div>
+
+<p>Let's see what orientations we have:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">orientations</span> <span class="o">=</span> <span class="n">drifting_gratings_presentations</span><span class="p">[</span><span class="s1">&#39;orientation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="c1"># get oreintations of the static gratings</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">orientations</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>array([315.0, 90.0, 225.0, 90.0, 135.0, 0.0, 315.0, 315.0, 270.0, 90.0,
+       0.0, 315.0, 270.0, &#39;null&#39;, &#39;null&#39;, 315.0, 315.0, 315.0, 180.0,
+       &#39;null&#39;, 45.0, 315.0, 90.0, 270.0, 135.0, 90.0, 135.0, 135.0, 135.0,
+       45.0, 315.0, 0.0, 180.0, 0.0, 315.0, 315.0, 45.0, 90.0, 180.0,
+       &#39;null&#39;, 135.0, 225.0, 0.0, 135.0, 45.0, 315.0, 225.0, 0.0, 45.0,
+       270.0, 135.0, 180.0, 180.0, 180.0, 90.0, 0.0, 0.0, 90.0, 225.0,
+       90.0, &#39;null&#39;, 45.0, &#39;null&#39;, 270.0, 45.0, 180.0, 225.0, 225.0, 45.0,
+       90.0, 315.0, 270.0, 270.0, 270.0, 0.0, 45.0, 270.0, 270.0, 225.0,
+       270.0, 180.0, 180.0, 315.0, 45.0, 90.0, 270.0, 315.0, 135.0, 315.0,
+       45.0, 135.0, &#39;null&#39;, 225.0, 180.0, 90.0, 225.0, 180.0, 90.0, 315.0,
+       270.0, 135.0, 270.0, 180.0, 315.0, 0.0, 315.0, 225.0, 45.0, 90.0,
+       0.0, 135.0, 0.0, 45.0, 90.0, 90.0, 135.0, 270.0, 270.0, 45.0,
+       225.0, 45.0, 180.0, 180.0, 90.0, 90.0, 90.0, 270.0, 0.0, 315.0,
+       225.0, 180.0, 270.0, 45.0, 315.0, 45.0, 135.0, 45.0, 45.0, 45.0,
+       270.0, &#39;null&#39;, 180.0, 180.0, 90.0, &#39;null&#39;, 315.0, 180.0, 0.0,
+       &#39;null&#39;, 135.0, 315.0, 225.0, 45.0, 315.0, 270.0, 135.0, &#39;null&#39;,
+       135.0, 270.0, 0.0, 225.0, 0.0, 135.0, 225.0, 225.0, 135.0, 45.0,
+       90.0, 225.0, 45.0, 45.0, 0.0, 180.0, 180.0, 135.0, 315.0, 180.0,
+       315.0, 0.0, 315.0, 180.0, &#39;null&#39;, 135.0, 270.0, 225.0, 90.0, 270.0,
+       135.0, 270.0, 180.0, 225.0, 0.0, 0.0, 0.0, 270.0, 180.0, 270.0,
+       &#39;null&#39;, &#39;null&#39;, 45.0, 0.0, &#39;null&#39;, 135.0, &#39;null&#39;, 315.0, 135.0,
+       0.0, 90.0, 225.0, 45.0, 315.0, 225.0, 0.0, 180.0, 0.0, 225.0, 0.0,
+       270.0, 45.0, 225.0, 180.0, 315.0, 90.0, 90.0, 90.0, 270.0, 180.0,
+       45.0, 0.0, 270.0, 45.0, 90.0, 45.0, 270.0, 0.0, 90.0, 0.0, 90.0,
+       90.0, 225.0, 180.0, 180.0, 135.0, 135.0, 270.0, 180.0, 135.0,
+       135.0, 45.0, 315.0, 225.0, 315.0, 90.0, 0.0, 135.0, &#39;null&#39;, 90.0,
+       135.0, 135.0, 225.0, 45.0, 0.0, 0.0, 135.0, 315.0, 135.0, 225.0,
+       315.0, 225.0, 270.0, 135.0, 135.0, 225.0, 135.0, 315.0, &#39;null&#39;,
+       180.0, 315.0, 225.0, 0.0, 225.0, 180.0, 270.0, 45.0, 135.0, 45.0,
+       270.0, 135.0, 270.0, 90.0, 270.0, 45.0, 45.0, 45.0, 135.0, &#39;null&#39;,
+       90.0, 45.0, 225.0, 45.0, 225.0, 45.0, 45.0, 0.0, &#39;null&#39;, 45.0,
+       270.0, 270.0, 45.0, 225.0, 90.0, 135.0, 45.0, 90.0, 180.0, 90.0,
+       315.0, 0.0, 0.0, 225.0, 315.0, 180.0, 45.0, 90.0, 225.0, 45.0,
+       180.0, &#39;null&#39;, 135.0, 0.0, 0.0, 135.0, 315.0, 135.0, 180.0, 270.0,
+       270.0, 315.0, 180.0, 315.0, 90.0, 45.0, 0.0, 315.0, 90.0, 45.0,
+       135.0, 180.0, 135.0, 135.0, 180.0, 0.0, 270.0, 225.0, 270.0, 45.0,
+       180.0, 0.0, 225.0, 45.0, 90.0, 270.0, 45.0, 225.0, 270.0, 180.0,
+       315.0, 225.0, 0.0, 225.0, 90.0, 315.0, 270.0, 45.0, 0.0, 45.0,
+       90.0, 180.0, 0.0, 90.0, 90.0, 180.0, 45.0, 45.0, 90.0, 135.0,
+       270.0, 135.0, 225.0, &#39;null&#39;, 315.0, 270.0, 135.0, 315.0, 270.0,
+       0.0, 270.0, 180.0, 0.0, 270.0, 315.0, 225.0, 180.0, 180.0, 90.0,
+       315.0, 0.0, 0.0, 45.0, 270.0, 315.0, 180.0, 270.0, 270.0, 0.0,
+       270.0, 135.0, 270.0, 45.0, 90.0, &#39;null&#39;, 315.0, 90.0, 180.0, 90.0,
+       225.0, 315.0, 0.0, 315.0, 225.0, 180.0, 0.0, 180.0, 180.0, 180.0,
+       225.0, 90.0, 45.0, 225.0, 0.0, 0.0, 270.0, 225.0, 0.0, 90.0,
+       &#39;null&#39;, 135.0, 225.0, 315.0, 180.0, 135.0, 90.0, 0.0, 135.0, 180.0,
+       270.0, 90.0, 0.0, 225.0, 180.0, 180.0, 90.0, 90.0, 90.0, 180.0,
+       315.0, 180.0, 0.0, 270.0, 135.0, 45.0, 315.0, &#39;null&#39;, 225.0, 90.0,
+       180.0, 315.0, &#39;null&#39;, 45.0, 90.0, 0.0, 90.0, 225.0, 90.0, 180.0,
+       0.0, 45.0, 180.0, 270.0, 315.0, 315.0, 225.0, 90.0, 225.0, 90.0,
+       315.0, 315.0, 0.0, 270.0, 90.0, 225.0, 225.0, 135.0, 45.0, 90.0,
+       180.0, 45.0, 135.0, 270.0, 225.0, 135.0, 0.0, 0.0, 45.0, 90.0,
+       315.0, 90.0, 45.0, 45.0, 315.0, 45.0, 90.0, 0.0, 45.0, 180.0,
+       225.0, 0.0, 315.0, 180.0, 90.0, 225.0, 225.0, 270.0, 45.0, 0.0,
+       90.0, 0.0, 315.0, 225.0, 270.0, 180.0, 45.0, 135.0, 225.0, 225.0,
+       225.0, 135.0, 225.0, 270.0, 90.0, &#39;null&#39;, 270.0, 315.0, 135.0,
+       225.0, 90.0, 180.0, 225.0, 135.0, 270.0, 315.0, 45.0, 180.0, 0.0,
+       0.0, 225.0, 135.0, 315.0, 135.0, 135.0, 90.0, 225.0, 0.0, 315.0,
+       270.0, 180.0, &#39;null&#39;, 315.0, 135.0, 45.0, 0.0, 135.0, 45.0, 180.0,
+       &#39;null&#39;, 270.0, 180.0, 270.0, 135.0, 225.0, 225.0, &#39;null&#39;, 270.0,
+       135.0, 0.0, 135.0, 270.0, 180.0, 315.0, 270.0, 315.0, 225.0, 135.0,
+       315.0, 315.0, 0.0, 90.0, 180.0, 270.0, 225.0, 135.0, 90.0, 135.0,
+       45.0, 180.0, 270.0, 315.0, 0.0, 135.0, 315.0, 225.0, 45.0, 225.0,
+       135.0, 180.0, 0.0, 180.0, 270.0], dtype=object)
+</code></pre></div>
+<p>We can see that there are some null values. Let's convert these values to floats for better handling.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">orientations</span><span class="p">[</span><span class="n">orientations</span><span class="o">==</span><span class="s1">&#39;null&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="c1"># replace all null values to NaN</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">orientations</span> <span class="o">=</span> <span class="n">orientations</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="c1"># convert to float array</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">angle_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">orientations</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># find all unique values excluding NaNs</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">angle_range</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>array([  0.,  45.,  90., 135., 180., 225., 270., 315.])
+</code></pre></div>
+<p>These are the 8 orientations of the driftig gratings, sampling 360 degrees at 45 degree intervals.</p>
+<p>Now we need to access information from <em>stimulus_presentations</em> metadata and load it as a Pynapple object. Specifically, we need to create a dictionary of IntervalSets for each orientation.</p>
+<p>First, we need stimulus intervals for drifting gratings to organize by orientation.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">drifting_gratings_intervals</span> <span class="o">=</span>  <span class="n">stimulus_intervals</span><span class="p">[</span><span class="s1">&#39;drifting_gratings&#39;</span><span class="p">]</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">drifting_gratings_intervals</span>
+</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>start</th>
+      <th>end</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1574.774823</td>
+      <td>1576.776513</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1577.777347</td>
+      <td>1579.779027</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1580.779833</td>
+      <td>1582.781563</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1583.782367</td>
+      <td>1585.784047</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1586.784883</td>
+      <td>1588.786553</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5366.976107</td>
+      <td>5368.977777</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>5369.978603</td>
+      <td>5371.980283</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>5372.981107</td>
+      <td>5374.982807</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>5375.983663</td>
+      <td>5377.985343</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>5378.986127</td>
+      <td>5380.987797</td>
+    </tr>
+  </tbody>
+</table>
+<p>628 rows × 2 columns</p>
+</div>
+
+<p>Great. Now let's proceed to sorting these intervals into <strong>IntervalSet</strong>s by their orientation</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">dict_ori</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="n">angle_range</span><span class="p">:</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>    <span class="n">tokeep</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># list of trials to keep</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">drifting_gratings_presentations</span><span class="p">)):</span> <span class="c1"># loop over all gabors trials</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>        <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">orientations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="n">angle</span><span class="p">):</span> <span class="c1"># find trials with given orientation</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>            <span class="n">tokeep</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>    <span class="n">dict_ori</span><span class="p">[</span><span class="n">angle</span><span class="p">]</span> <span class="o">=</span> <span class="n">drifting_gratings_intervals</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">tokeep</span><span class="p">]</span> <span class="c1"># make dictionary of IntervalSets</span>
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="n">dict_ori</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>{0.0:           start          end
+ 0   1589.787377  1591.789047
+ 1   1604.799993  1606.801573
+ 2   1667.852587  1669.854267
+ 3   1673.857607  1675.859277
+ 4   1700.880223  1702.881873
+ ..          ...          ...
+ 69  5237.868283  5239.869913
+ 70  5279.903393  5281.905073
+ 71  5312.930947  5314.932627
+ 72  5348.961047  5350.962727
+ 73  5372.981107  5374.982807
+
+ [74 rows x 2 columns],
+ 45.0:           start          end
+ 0   1634.824993  1636.826683
+ 1   1661.847597  1663.849267
+ 2   1682.865123  1684.866833
+ 3   1706.885213  1708.886883
+ 4   1718.895253  1720.896963
+ ..          ...          ...
+ 70  5180.820607  5182.822277
+ 71  5234.865757  5236.867417
+ 72  5243.873283  5245.874953
+ 73  5336.951027  5338.952697
+ 74  5360.971097  5362.972757
+
+ [75 rows x 2 columns],
+ 90.0:           start          end
+ 0   1577.777347  1579.779027
+ 1   1583.782367  1585.784047
+ 2   1601.797417  1603.799097
+ 3   1640.830033  1642.831703
+ 4   1649.837547  1651.839217
+ ..          ...          ...
+ 70  5144.790507  5146.792167
+ 71  5162.805557  5164.807227
+ 72  5207.843153  5209.844843
+ 73  5315.933463  5317.935153
+ 74  5330.945997  5332.947677
+
+ [75 rows x 2 columns],
+ 135.0:           start          end
+ 0   1586.784883  1588.786553
+ 1   1646.834993  1648.836703
+ 2   1652.840073  1654.841743
+ 3   1655.842567  1657.844227
+ 4   1658.845063  1660.846763
+ ..          ...          ...
+ 69  5303.923423  5305.925113
+ 70  5327.943483  5329.945163
+ 71  5333.948513  5335.950203
+ 72  5351.963563  5353.965203
+ 73  5366.976107  5368.977777
+
+ [74 rows x 2 columns],
+ 180.0:           start          end
+ 0   1628.820023  1630.821703
+ 1   1670.855103  1672.856783
+ 2   1688.870163  1690.871853
+ 3   1727.902757  1729.904427
+ 4   1730.905303  1732.906953
+ ..          ...          ...
+ 70  5288.910887  5290.912557
+ 71  5318.935957  5320.937647
+ 72  5339.953523  5341.955183
+ 73  5369.978603  5371.980283
+ 74  5375.983663  5377.985343
+
+ [75 rows x 2 columns],
+ 225.0:           start          end
+ 0   1580.779833  1582.781563
+ 1   1697.877687  1699.879357
+ 2   1712.890213  1714.891913
+ 3   1748.920323  1750.922013
+ 4   1772.940363  1774.942053
+ ..          ...          ...
+ 70  5267.893343  5269.895043
+ 71  5300.920927  5302.922597
+ 72  5324.940987  5326.942657
+ 73  5357.968573  5359.970233
+ 74  5363.973593  5365.975283
+
+ [75 rows x 2 columns],
+ 270.0:           start          end
+ 0   1598.794933  1600.796563
+ 1   1610.804943  1612.806633
+ 2   1643.832527  1645.834217
+ 3   1721.897747  1723.899427
+ 4   1763.932867  1765.934547
+ ..          ...          ...
+ 70  5285.908373  5287.910063
+ 71  5294.915917  5296.917577
+ 72  5321.938523  5323.940153
+ 73  5342.956047  5344.957707
+ 74  5378.986127  5380.987797
+
+ [75 rows x 2 columns],
+ 315.0:           start          end
+ 0   1574.774823  1576.776513
+ 1   1592.789903  1594.791563
+ 2   1595.792407  1597.794077
+ 3   1607.802437  1609.804107
+ 4   1619.812457  1621.814137
+ ..          ...          ...
+ 70  5297.918423  5299.920093
+ 71  5306.925927  5308.927607
+ 72  5309.928463  5311.930133
+ 73  5345.958553  5347.960203
+ 74  5354.966067  5356.967737
+
+ [75 rows x 2 columns]}
+</code></pre></div>
+<p>This dictionary has the <em>drifting_gratings_intervals</em> sorted by orientation. We can use these to compute orientation tuning curves. Since the stimuli are presented in discrete orientations (i.e. not spanning all angular values from 0 to 360 degrees), we will be using Pynapple's <em>compute_discrete_tuning_curves</em>.</p>
+<p>We can calculate tuning curves with one line with Pynapple!</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Plot firing rate of V1 units as a function of orientation, i.e. an orientation tuning curve</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="n">discrete_tuning_curves</span> <span class="o">=</span> <span class="n">nap</span><span class="o">.</span><span class="n">compute_discrete_tuning_curves</span><span class="p">(</span><span class="n">v1_high_snr_units</span><span class="p">,</span> <span class="n">dict_ori</span><span class="p">)</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="n">discrete_tuning_curves</span>
+</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>950930985</th>
+      <th>950931458</th>
+      <th>950931533</th>
+      <th>950931727</th>
+      <th>950931751</th>
+      <th>950932696</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.0</th>
+      <td>29.995305</td>
+      <td>10.423757</td>
+      <td>1.829558</td>
+      <td>23.304928</td>
+      <td>2.848980</td>
+      <td>0.067511</td>
+    </tr>
+    <tr>
+      <th>45.0</th>
+      <td>44.840722</td>
+      <td>15.482074</td>
+      <td>3.244307</td>
+      <td>23.389656</td>
+      <td>3.430838</td>
+      <td>0.133236</td>
+    </tr>
+    <tr>
+      <th>90.0</th>
+      <td>33.685112</td>
+      <td>16.839225</td>
+      <td>1.825138</td>
+      <td>14.194774</td>
+      <td>3.084083</td>
+      <td>0.006661</td>
+    </tr>
+    <tr>
+      <th>135.0</th>
+      <td>17.431332</td>
+      <td>16.000099</td>
+      <td>4.793279</td>
+      <td>19.017840</td>
+      <td>3.659094</td>
+      <td>0.567092</td>
+    </tr>
+    <tr>
+      <th>180.0</th>
+      <td>33.585341</td>
+      <td>13.109074</td>
+      <td>1.971690</td>
+      <td>27.217315</td>
+      <td>4.336386</td>
+      <td>0.686095</td>
+    </tr>
+    <tr>
+      <th>225.0</th>
+      <td>45.734898</td>
+      <td>14.614385</td>
+      <td>4.782647</td>
+      <td>22.894093</td>
+      <td>3.843437</td>
+      <td>0.293087</td>
+    </tr>
+    <tr>
+      <th>270.0</th>
+      <td>38.394459</td>
+      <td>14.281353</td>
+      <td>1.731881</td>
+      <td>13.681856</td>
+      <td>2.804314</td>
+      <td>0.079933</td>
+    </tr>
+    <tr>
+      <th>315.0</th>
+      <td>19.910011</td>
+      <td>14.840918</td>
+      <td>4.216473</td>
+      <td>20.476204</td>
+      <td>2.930882</td>
+      <td>0.526226</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Each column is a unit, and each row is the orientation of the stimulus in degrees. The values in the table represent the firing rate of the unit in Hz. Let's plot them!</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">v1_unit_IDs</span><span class="p">)):</span> <span class="c1"># loop over all unit IDs</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># plot tuning curves in 2 rows and 3 columns</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">discrete_tuning_curves</span><span class="p">[</span><span class="n">v1_unit_IDs</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Orientation (deg)&#39;</span><span class="p">)</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Firing rate (Hz)&#39;</span><span class="p">)</span>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Unit </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">v1_unit_IDs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+</span></code></pre></div>
+<p><img alt="png" src="nwbmatic-pynapple-allen-tutorial_files/nwbmatic-pynapple-allen-tutorial_50_0.png" /></p>
+<p>Nice! Looks like some of these neurons have some degree of orientation tuning.</p>
+<h3 id="2d-spatial-tuning-curves">2D Spatial Tuning Curves</h3>
+<p>Neurons in V1 are known to have spatial tuning based on the location of the stimulus in space.</p>
+<p>The gabors stimuli are shown on various locations on the screen. The x-y location of stimuli can be found in the <em>stimulus_presentations</em> metadata. Here, we will go through how we can access this metadata and use it to calculate 2D spatial tuning curves.</p>
+<p>Let's first get a table of stimulus presentations for gabors to look at the metadata for this stimulus.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># get gabors informatiom from stimulus_presentations metadata</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="n">gabors_presentations</span> <span class="o">=</span> <span class="n">stimulus_presentations</span><span class="p">[</span><span class="n">stimulus_presentations</span><span class="p">[</span><span class="s1">&#39;stimulus_name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;gabors&#39;</span><span class="p">]</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">gabors_presentations</span>
+</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>contrast</th>
+      <th>frame</th>
+      <th>orientation</th>
+      <th>phase</th>
+      <th>size</th>
+      <th>spatial_frequency</th>
+      <th>start_time</th>
+      <th>stimulus_block</th>
+      <th>stimulus_name</th>
+      <th>stop_time</th>
+      <th>temporal_frequency</th>
+      <th>x_position</th>
+      <th>y_position</th>
+      <th>duration</th>
+      <th>stimulus_condition_id</th>
+    </tr>
+    <tr>
+      <th>stimulus_presentation_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>45.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>0.08</td>
+      <td>73.537433</td>
+      <td>0.0</td>
+      <td>gabors</td>
+      <td>73.770952</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>0.233519</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>0.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>0.08</td>
+      <td>73.770952</td>
+      <td>0.0</td>
+      <td>gabors</td>
+      <td>74.021150</td>
+      <td>4.0</td>
+      <td>-30.0</td>
+      <td>-10.0</td>
+      <td>0.250199</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>45.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>0.08</td>
+      <td>74.021150</td>
+      <td>0.0</td>
+      <td>gabors</td>
+      <td>74.271349</td>
+      <td>4.0</td>
+      <td>10.0</td>
+      <td>20.0</td>
+      <td>0.250199</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>0.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>0.08</td>
+      <td>74.271349</td>
+      <td>0.0</td>
+      <td>gabors</td>
+      <td>74.521547</td>
+      <td>4.0</td>
+      <td>-40.0</td>
+      <td>-40.0</td>
+      <td>0.250199</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>90.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>0.08</td>
+      <td>74.521547</td>
+      <td>0.0</td>
+      <td>gabors</td>
+      <td>74.771764</td>
+      <td>4.0</td>
+      <td>-10.0</td>
+      <td>-10.0</td>
+      <td>0.250216</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3641</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>45.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>0.08</td>
+      <td>984.281513</td>
+      <td>0.0</td>
+      <td>gabors</td>
+      <td>984.531719</td>
+      <td>4.0</td>
+      <td>30.0</td>
+      <td>-10.0</td>
+      <td>0.250206</td>
+      <td>192</td>
+    </tr>
+    <tr>
+      <th>3642</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>45.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>0.08</td>
+      <td>984.531719</td>
+      <td>0.0</td>
+      <td>gabors</td>
+      <td>984.781925</td>
+      <td>4.0</td>
+      <td>-20.0</td>
+      <td>10.0</td>
+      <td>0.250206</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>3643</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>0.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>0.08</td>
+      <td>984.781925</td>
+      <td>0.0</td>
+      <td>gabors</td>
+      <td>985.032131</td>
+      <td>4.0</td>
+      <td>-30.0</td>
+      <td>40.0</td>
+      <td>0.250206</td>
+      <td>186</td>
+    </tr>
+    <tr>
+      <th>3644</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>45.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>0.08</td>
+      <td>985.032131</td>
+      <td>0.0</td>
+      <td>gabors</td>
+      <td>985.282337</td>
+      <td>4.0</td>
+      <td>10.0</td>
+      <td>-30.0</td>
+      <td>0.250206</td>
+      <td>232</td>
+    </tr>
+    <tr>
+      <th>3645</th>
+      <td>null</td>
+      <td>0.8</td>
+      <td>null</td>
+      <td>45.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>0.08</td>
+      <td>985.282337</td>
+      <td>0.0</td>
+      <td>gabors</td>
+      <td>985.532551</td>
+      <td>4.0</td>
+      <td>-40.0</td>
+      <td>40.0</td>
+      <td>0.250214</td>
+      <td>153</td>
+    </tr>
+  </tbody>
+</table>
+<p>3645 rows × 16 columns</p>
+</div>
+
+<p>Now, we need to extract the x- and y-position from the metadata and load it into a <strong>TsdFrame</strong>.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># extract x- and y-position columns</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="n">x_positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">gabors_presentations</span><span class="p">[</span><span class="s1">&#39;x_position&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="n">y_positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">gabors_presentations</span><span class="p">[</span><span class="s1">&#39;y_position&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="c1"># load into x and y positions into a vstack</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="n">xy_positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">x_positions</span><span class="p">,</span><span class="n">y_positions</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="c1"># what does this look like?</span>
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="n">xy_positions</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>array([[  0.,  30.],
+       [-30., -10.],
+       [ 10.,  20.],
+       ...,
+       [-30.,  40.],
+       [ 10., -30.],
+       [-40.,  40.]])
+</code></pre></div>
+<p>Now let's load the xy positions into a <strong>TsdFrame</strong>. Since we will use the absolute start times as the time index (see below), we don't need to provide additional time support. When no time support is passed, the default global time support is used.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># get start time as start time of the stimulus presentations</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">time_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">gabors_presentations</span><span class="p">[</span><span class="s1">&#39;start_time&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">values</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="c1"># load TsdFrame</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="n">xy_features</span> <span class="o">=</span> <span class="n">nap</span><span class="o">.</span><span class="n">TsdFrame</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">time_index</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">xy_positions</span><span class="p">,</span> <span class="n">time_units</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">])</span>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="c1"># what does this look like?</span>
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="n">xy_features</span>
+</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+    <tr>
+      <th>Time (s)</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>73.537433</th>
+      <td>0.0</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>73.770952</th>
+      <td>-30.0</td>
+      <td>-10.0</td>
+    </tr>
+    <tr>
+      <th>74.021150</th>
+      <td>10.0</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>74.271349</th>
+      <td>-40.0</td>
+      <td>-40.0</td>
+    </tr>
+    <tr>
+      <th>74.521547</th>
+      <td>-10.0</td>
+      <td>-10.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>984.281513</th>
+      <td>30.0</td>
+      <td>-10.0</td>
+    </tr>
+    <tr>
+      <th>984.531719</th>
+      <td>-20.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>984.781925</th>
+      <td>-30.0</td>
+      <td>40.0</td>
+    </tr>
+    <tr>
+      <th>985.032131</th>
+      <td>10.0</td>
+      <td>-30.0</td>
+    </tr>
+    <tr>
+      <th>985.282337</th>
+      <td>-40.0</td>
+      <td>40.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>3645 rows × 2 columns</p>
+</div>
+
+<p>Great! Almost there. To compute the 2D tuning curve, it just takes one line with Pynapple!</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># using bin size of 9 since x-y stimulus is shown in a 9x9 grid (-40,-30,-20,-10,0,10,20,30,40)</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="n">spatial_tuning_curve</span><span class="p">,</span> <span class="n">binsxy</span> <span class="o">=</span> <span class="n">nap</span><span class="o">.</span><span class="n">compute_2d_tuning_curves</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="n">v1_high_snr_units</span><span class="p">,</span><span class="n">feature</span><span class="o">=</span><span class="n">xy_features</span><span class="p">,</span> <span class="n">nb_bins</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">spatial_tuning_curve</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>{950930985: array([[39.71176567, 44.15379762, 44.7756821 , 42.82118804, 39.00104056,
+         41.13321589, 43.70959443, 40.60017206, 37.40190905],
+        [35.62509627, 45.04220401, 47.79626383, 45.21988529, 43.44307251,
+         40.2448095 , 37.57959033, 36.33582138, 40.15596886],
+        [41.31089717, 45.13104465, 46.55249488, 44.15379762, 41.75510037,
+         43.53191315, 35.26973372, 38.645678  , 39.97828759],
+        [37.49074969, 44.7756821 , 45.39756657, 39.97828759, 41.13321589,
+         38.29031544, 39.71176567, 40.51133142, 39.35640311],
+        [45.39756657, 39.88944695, 37.31306841, 41.31089717, 36.86886522,
+         38.11263417, 41.66625973, 39.53408439, 37.49074969],
+        [45.75292913, 38.82335928, 39.00104056, 40.2448095 , 41.75510037,
+         39.26756247, 39.0898812 , 42.64350676, 45.39756657],
+        [41.93278165, 44.06495698, 44.15379762, 43.35423187, 39.71176567,
+         35.09205244, 39.44524375, 42.99886932, 38.46799672],
+        [41.04437526, 42.82118804, 44.15379762, 40.60017206, 42.37698484,
+         36.24698075, 36.42466202, 40.60017206, 39.0898812 ],
+        [40.06712823, 42.91002868, 43.44307251, 41.66625973, 38.2014748 ,
+         36.51350266, 38.82335928, 37.13538714, 39.80060631]]),
+ 950931458: array([[12.08232692, 11.19392052, 11.72696436, 13.32609586, 11.99348628,
+         11.63812372, 12.88189267, 10.39435477, 12.88189267],
+        [12.70421139, 13.4149365 , 14.21450225, 12.79305203, 12.26000819,
+         14.48102417, 11.72696436, 14.21450225, 13.68145842],
+        [13.68145842, 15.28058992, 16.52435887, 14.83638673, 15.014068  ,
+         13.14841458, 11.72696436, 12.61537075, 13.14841458],
+        [13.77029906, 17.0574027 , 20.25566571, 21.05523146, 15.4582712 ,
+         14.39218353, 13.32609586, 13.14841458, 11.815805  ],
+        [15.4582712 , 18.92305612, 23.72045063, 27.45175748, 17.32392462,
+         15.19174928, 11.28276116, 13.59261778, 13.59261778],
+        [12.52653011, 16.34667759, 23.09856616, 22.83204424, 14.56986481,
+         13.05957394, 10.21667349, 12.88189267, 12.97073331],
+        [12.70421139, 13.77029906, 14.83638673, 13.14841458, 13.23725522,
+         14.56986481, 11.46044244, 12.43768947, 14.39218353],
+        [14.30334289, 13.68145842, 11.46044244, 13.32609586, 12.43768947,
+         11.63812372, 14.21450225, 12.52653011, 11.63812372],
+        [12.79305203, 13.14841458, 12.34884883, 12.08232692, 12.61537075,
+         11.72696436, 12.17116755, 10.74971733, 12.79305203]]),
+ 950931533: array([[1.15492831, 0.97724703, 0.97724703, 1.5991315 , 1.33260959,
+         1.06608767, 0.88840639, 0.71072511, 1.06608767],
+        [1.06608767, 2.22101598, 2.57637853, 2.22101598, 1.77681278,
+         0.79956575, 0.97724703, 0.71072511, 0.4442032 ],
+        [1.33260959, 3.19826301, 4.0866694 , 3.90898812, 2.30985662,
+         1.51029086, 0.4442032 , 1.33260959, 1.24376895],
+        [0.71072511, 2.39869726, 4.61971323, 4.53087259, 1.86565342,
+         1.15492831, 1.51029086, 1.06608767, 0.88840639],
+        [0.97724703, 1.5991315 , 2.66521917, 3.28710365, 0.53304383,
+         1.42145023, 0.79956575, 2.30985662, 1.42145023],
+        [0.62188447, 1.15492831, 1.42145023, 1.51029086, 1.42145023,
+         1.24376895, 1.06608767, 0.71072511, 0.71072511],
+        [1.51029086, 1.42145023, 0.97724703, 1.15492831, 1.15492831,
+         1.15492831, 1.86565342, 1.33260959, 1.42145023],
+        [0.88840639, 0.71072511, 1.68797214, 1.42145023, 0.88840639,
+         0.26652192, 1.5991315 , 0.97724703, 0.53304383],
+        [1.06608767, 1.06608767, 1.95449406, 1.51029086, 0.71072511,
+         1.5991315 , 0.97724703, 0.62188447, 1.24376895]]),
+ 950931727: array([[16.52435887, 15.10290864, 15.99131503, 15.014068  , 14.83638673,
+         16.25783695, 15.99131503, 14.03682097, 16.16899631],
+        [16.25783695, 14.74754609, 16.79088079, 17.14624334, 18.12349037,
+         18.92305612, 15.9024744 , 15.10290864, 16.79088079],
+        [16.25783695, 20.16682507, 24.7865383 , 21.5882753 , 19.90030315,
+         15.36943056, 15.9024744 , 14.21450225, 18.12349037],
+        [16.16899631, 29.49509217, 33.58176157, 27.89596067, 17.32392462,
+         16.43551823, 16.96856206, 16.16899631, 15.63595248],
+        [20.52218763, 34.02596477, 31.3607456 , 31.89378943, 19.5449406 ,
+         18.74537485, 15.4582712 , 14.65870545, 16.25783695],
+        [21.41059402, 32.33799263, 36.33582138, 35.80277755, 20.78870954,
+         15.4582712 , 13.59261778, 17.59044654, 20.25566571],
+        [17.94580909, 28.60668578, 33.22639902, 29.76161409, 20.96639082,
+         17.32392462, 18.03464973, 17.0574027 , 17.32392462],
+        [18.39001229, 21.76595657, 25.05306022, 21.5882753 , 17.85696846,
+         15.99131503, 18.39001229, 16.61319951, 16.52435887],
+        [17.59044654, 18.39001229, 22.38784105, 21.85479721, 18.30117165,
+         16.08015567, 16.79088079, 14.39218353, 16.25783695]]),
+ 950931751: array([[3.10942237, 1.06608767, 1.51029086, 1.33260959, 2.22101598,
+         2.75405981, 1.5991315 , 1.24376895, 1.5991315 ],
+        [2.57637853, 2.66521917, 2.93174109, 2.84290045, 2.84290045,
+         2.75405981, 2.22101598, 1.5991315 , 2.0433347 ],
+        [1.51029086, 5.06391643, 6.21884474, 3.90898812, 1.86565342,
+         1.42145023, 1.51029086, 1.68797214, 1.95449406],
+        [1.68797214, 7.37377304, 8.1733388 , 5.33043834, 3.02058173,
+         1.77681278, 1.42145023, 1.77681278, 2.30985662],
+        [3.37594429, 7.64029496, 8.43986071, 4.88623515, 2.84290045,
+         4.17551004, 2.13217534, 2.0433347 , 2.57637853],
+        [2.0433347 , 4.97507579, 7.55145432, 2.66521917, 1.95449406,
+         1.86565342, 1.5991315 , 2.30985662, 2.57637853],
+        [1.95449406, 2.57637853, 3.99782876, 2.57637853, 2.22101598,
+         2.75405981, 2.13217534, 2.39869726, 1.68797214],
+        [1.86565342, 3.82014748, 2.57637853, 1.86565342, 1.15492831,
+         1.86565342, 2.93174109, 1.06608767, 2.30985662],
+        [2.75405981, 1.77681278, 1.68797214, 2.0433347 , 2.30985662,
+         2.0433347 , 1.68797214, 1.95449406, 2.30985662]]),
+ 950932696: array([[0.        , 0.        , 0.        , 0.08884064, 0.        ,
+         0.        , 0.08884064, 0.        , 0.08884064],
+        [0.08884064, 0.08884064, 0.08884064, 0.        , 0.17768128,
+         0.        , 0.08884064, 0.        , 0.08884064],
+        [0.08884064, 0.        , 0.        , 0.17768128, 0.        ,
+         0.        , 0.        , 0.        , 0.08884064],
+        [0.        , 0.        , 0.17768128, 0.17768128, 0.08884064,
+         0.        , 0.08884064, 0.        , 0.35536256],
+        [0.        , 0.        , 0.08884064, 0.17768128, 0.08884064,
+         0.        , 0.        , 0.        , 0.17768128],
+        [0.08884064, 0.        , 0.35536256, 0.        , 0.17768128,
+         0.26652192, 0.08884064, 0.        , 0.26652192],
+        [0.        , 0.08884064, 0.08884064, 0.17768128, 0.26652192,
+         0.        , 0.08884064, 0.08884064, 0.08884064],
+        [0.        , 0.        , 0.        , 0.        , 0.26652192,
+         0.08884064, 0.08884064, 0.26652192, 0.        ],
+        [0.08884064, 0.08884064, 0.26652192, 0.17768128, 0.17768128,
+         0.08884064, 0.17768128, 0.        , 0.        ]])}
+</code></pre></div>
+<p>Now we have calculated the 2D spatial tuning curve for our neurons in V1! Let's plot it with a heat map.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1">#set the x and y axis limits</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="n">extent</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="c1"># Create a 2x3 grid of subplots</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="c1"># Iterate over each unit and plot the heatmap in a subplot</span>
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">unit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">v1_unit_IDs</span><span class="p">):</span>
+</span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>    <span class="n">values</span> <span class="o">=</span> <span class="n">spatial_tuning_curve</span><span class="p">[</span><span class="n">unit</span><span class="p">]</span>
+</span><span id="__span-30-10"><a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>
+</span><span id="__span-30-11"><a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>    <span class="c1"># Select the current subplot</span>
+</span><span id="__span-30-12"><a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a>    <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span> <span class="o">//</span> <span class="mi">3</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span><span class="p">]</span>
+</span><span id="__span-30-13"><a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a>
+</span><span id="__span-30-14"><a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a>    <span class="c1"># Create the heatmap using seaborn with adjusted aspect ratio</span>
+</span><span id="__span-30-15"><a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">spatial_tuning_curve</span><span class="p">[</span><span class="n">unit</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">values</span><span class="p">),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">values</span><span class="p">))</span>
+</span><span id="__span-30-16"><a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a>
+</span><span id="__span-30-17"><a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a>    <span class="c1"># Set the title and axis labels</span>
+</span><span id="__span-30-18"><a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unit: </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span id="__span-30-19"><a id="__codelineno-30-19" name="__codelineno-30-19" href="#__codelineno-30-19"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X-position&#39;</span><span class="p">)</span>
+</span><span id="__span-30-20"><a id="__codelineno-30-20" name="__codelineno-30-20" href="#__codelineno-30-20"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y-postition&#39;</span><span class="p">)</span>
+</span><span id="__span-30-21"><a id="__codelineno-30-21" name="__codelineno-30-21" href="#__codelineno-30-21"></a>
+</span><span id="__span-30-22"><a id="__codelineno-30-22" name="__codelineno-30-22" href="#__codelineno-30-22"></a><span class="c1"># Adjust the spacing between subplots</span>
+</span><span id="__span-30-23"><a id="__codelineno-30-23" name="__codelineno-30-23" href="#__codelineno-30-23"></a><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</span><span id="__span-30-24"><a id="__codelineno-30-24" name="__codelineno-30-24" href="#__codelineno-30-24"></a>
+</span><span id="__span-30-25"><a id="__codelineno-30-25" name="__codelineno-30-25" href="#__codelineno-30-25"></a><span class="c1"># Display the plot</span>
+</span><span id="__span-30-26"><a id="__codelineno-30-26" name="__codelineno-30-26" href="#__codelineno-30-26"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></code></pre></div>
+<p><img alt="png" src="nwbmatic-pynapple-allen-tutorial_files/nwbmatic-pynapple-allen-tutorial_62_0.png" /></p>
+<p>Awesome! Looks like some of our units show a great deal of spatial tuning.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../nwbmatic-custom-io/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Custom IO" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Custom IO
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../io/" class="md-footer__link md-footer__link--next" aria-label="Next: Miscellaneous" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Miscellaneous
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.361d90f1.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.289a2a4b.min.js"></script>
+      
+    
+  </body>
+</html>
