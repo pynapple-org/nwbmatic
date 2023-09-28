@@ -18,7 +18,6 @@ classifiers = [
 ]
 keywords = ["neuroscience"]
 dependencies = [
-    "allensdk>=2.15.1"
     "pandas>=1.0.3",
     "numpy>=1.17.4",
     "scipy>=1.3.2",
@@ -44,6 +43,8 @@ dev = [
   "flake8",  
   "coverage"
   ]
+
+allen = ["allensdk>=2.15.1"]
 
 [project.urls]
 homepage = "https://github.com/pynapple-org/nwbmatic"
