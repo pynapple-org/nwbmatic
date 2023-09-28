@@ -4,6 +4,7 @@ nav:
   - Tutorials: 
     - Loading neurosuite-optitrack: nwbmatic-neurosuite-optitrack.md
     - Custom IO: nwbmatic-custom-io.md
+    - AllenSDK: io.allends.md
     # - Gallery: generated/gallery
   - Modules:
     - Miscellaneous: io.md
@@ -11,7 +12,7 @@ nav:
     - Neurosuite: io.neurosuite.md
     - Phy: io.phy.md
     - CNMF-E: io.cnmfe.md
-    - Suite2p: io.suite2p.md
+    - Suite2p: io.suite2p.md    
   - Contributing: CONTRIBUTING.md
   - Authors: AUTHORS.md  
 theme:
