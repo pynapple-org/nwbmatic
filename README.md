@@ -48,6 +48,10 @@ $ conda create --name nwbmatic pip python=3.8
 $ conda activate nwbmatic
 $ pip install nwbmatic
 ```
+if you would like the option to use our feature that loads data from the Allen Institute (optional):
+``` {.sourceCode .shell}
+$ pip install nwbmatic[allen]
+```
 
 or directly from the source code:
 
@@ -68,6 +72,7 @@ This procedure will install all the dependencies including
 > -   numpy
 > -   pynwb 2.0
 > -   h5py
+> -   allensdk
 
 Example
 -------

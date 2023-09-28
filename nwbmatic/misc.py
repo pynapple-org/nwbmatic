@@ -13,6 +13,11 @@ import pynapple as nap
 from pynwb import NWBHDF5IO
 from pynwb.ecephys import LFP, ElectricalSeries
 
+try:
+    from .allends import AllenDS
+except ImportError:
+    pass
+
 from .cnmfe import CNMF_E, InscopixCNMFE, Minian
 from .loader import BaseLoader
 from .neurosuite import NeuroSuite
@@ -72,6 +77,8 @@ def load_session(path=None, session_type=None):
     elif session_type == "suite2p":
         return Suite2P(path)
 
+    elif session_type == "allends":
+        return AllenDS(path)
     else:
         return BaseLoader(path)
 

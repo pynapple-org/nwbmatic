@@ -44,6 +44,8 @@ dev = [
   "coverage"
   ]
 
+allen = ["allensdk>=2.15.1"]
+
 [project.urls]
 homepage = "https://github.com/pynapple-org/nwbmatic"
 documentation = "https://pynapple-org.github.io/nwbmatic/"

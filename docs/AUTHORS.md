@@ -11,4 +11,4 @@ Contributors
 
 - 	Sara Mahallati
 - 	Luigi Petrucco
--	Selen Calgi
+-	Selen Calgin
