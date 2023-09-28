@@ -337,7 +337,6 @@ class AllenDS(BaseLoader):
             return int(session_id)
 
         else:
-
             # Define the session IDs for type 1 and type 2 sessions
             sessions = cache.get_session_table()
             type1_sessions = sessions[
@@ -366,7 +365,9 @@ class AllenDS(BaseLoader):
 
                 else:
                     # Display an error message if no selection is made
-                    error_label.config(text="Please select a session ID.", foreground="red")
+                    error_label.config(
+                        text="Please select a session ID.", foreground="red"
+                    )
 
             # Create the Tkinter window
             window = tk.Tk()
