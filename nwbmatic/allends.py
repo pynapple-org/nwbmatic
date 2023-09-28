@@ -323,11 +323,9 @@ class AllenDS(BaseLoader):
         ----------
         cache: EcephysProjectCache
             Allensdk API for Neuropixels
-
         Returns: int
             session id through user selection
         -------
-
         EXCEPTION: if "session.txt" file exists (for testing purposes),
         session id will be taken from here.
         """
@@ -359,7 +357,6 @@ class AllenDS(BaseLoader):
                     session_dropdown["values"] = type2_sessions
 
             def ok_button_click():
-                global session_id
                 session_id = session_var.get()
 
                 # Validate the selection
@@ -419,4 +416,5 @@ class AllenDS(BaseLoader):
 
             window.mainloop()
 
+            session_id = session_var.get()
             return int(session_id)
