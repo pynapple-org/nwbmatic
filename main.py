@@ -5,13 +5,15 @@
 import nwbmatic as ntm
 import os, sys, shutil
 import pynapple as nap
+import numpy as np
+import matplotlib.pyplot as plt
 
 DATA_DIRECTORY = "your/path/to/A2929-200711"
 
-try:
-    shutil.rmtree(os.path.join(DATA_DIRECTORY, "pynapplenwb"), ignore_errors=True)
-except:
-    pass
+# try:
+#     shutil.rmtree(os.path.join(DATA_DIRECTORY, "pynapplenwb"), ignore_errors=True)
+# except:
+#     pass
 
 
 # LOADING DATA
