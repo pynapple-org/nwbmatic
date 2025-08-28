@@ -1,5 +1,9 @@
 # nwbmatic
 
+> **Warning**
+> This package is not maintained anymore. Please use another package to create NWB file.
+
+
 _NWB creator from various data streams_
 
 [![image](https://img.shields.io/pypi/v/nwbmatic.svg)](https://pypi.python.org/pypi/nwbmatic)
